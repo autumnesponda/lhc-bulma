@@ -8,10 +8,11 @@ $dark-color: #45454b;
 // End Custom Variables
 
 /* BULMA OVERRIDES */
-$navbar-item-hover-color: none;
+$navbar-item-hover-color: $dark-color;
+$navbar-item-hover-background-color: none;
 $navbar-tab-hover-border-bottom-color: $secondary-color;
 $button-focus-box-shadow-color: $secondary-color;
-$link-focus-border: $dark-color;
+$link-focus-border: $secondary-color;
 
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";

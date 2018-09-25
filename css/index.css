@@ -1613,7 +1613,7 @@ a.box:active {
 }
 
 .button:focus, .button.is-focused {
-  border-color: #45454b;
+  border-color: #e8e8fa;
   color: #363636;
 }
 
@@ -7084,8 +7084,8 @@ a.navbar-item,
 a.navbar-item:hover, a.navbar-item.is-active,
 .navbar-link:hover,
 .navbar-link.is-active {
-  background-color: #fafafa;
-  color: none;
+  background-color: none;
+  color: #45454b;
 }
 
 .navbar-item {
@@ -7437,7 +7437,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
     background-color: transparent;
   }
   .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: #fafafa;
+    background-color: none;
   }
 }
 
@@ -7515,7 +7515,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 .pagination-previous:focus,
 .pagination-next:focus,
 .pagination-link:focus {
-  border-color: #45454b;
+  border-color: #e8e8fa;
 }
 
 .pagination-previous:active,
