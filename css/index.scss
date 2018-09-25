@@ -34,12 +34,12 @@ body {
   align-items: center;
 }
 
-.dark-line {
+.light {
   border: none;
   font-weight: bold;
   width: 50px;
   height: 3px;
-  background: $dark-color;
+  background: $secondary-color;
   padding: 0;
   margin: 0 auto;
 }
