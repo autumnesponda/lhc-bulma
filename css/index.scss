@@ -1,6 +1,5 @@
 // Custom Variables
-$font-stack: "Playfair Display",
-serif;
+$font-stack: "Playfair Display", serif;
 
 $primary-color: #e6e6fa;
 $secondary-color: #e8e8fa;
@@ -70,4 +69,5 @@ body {
 
 .image:hover .overlay {
   opacity: 0.25;
+  cursor: pointer; // Remove this if pictures don't become clickable
 }
