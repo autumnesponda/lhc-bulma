@@ -1,5 +1,5 @@
 $("#scroll-button").click(function () {
     $('html, body').animate({
-        scrollTop: $("#footer").offset().top
+        scrollTop: $("#portfolio").offset().top
     }, 2000);
 });
