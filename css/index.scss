@@ -1,17 +1,26 @@
 // Custom Variables
-$font-stack: "Playfair Display", serif;
+$font-stack: "Playfair Display",
+serif;
 
-$primary-color: #e6e6fa;
-$secondary-color: #e8e8fa;
-$dark-color: #45454b;
+// Original Colors - Non Google Color
+// $primary-color: #e6e6fa;
+// $secondary-color: #e8e8fa;
+// $dark-color: #45454b;
+
+// Google Color Palette
+$primary-color: #e1bee7;
+$secondary-color: #fff1ff;
+$gradient-three: #f3e5f5;
+$dark-color: #af8eb5;
 // End Custom Variables
 
 /* BULMA OVERRIDES */
 $navbar-item-hover-color: $dark-color;
 $navbar-item-hover-background-color: none;
-$navbar-tab-hover-border-bottom-color: $secondary-color;
-$button-focus-box-shadow-color: $secondary-color;
-$link-focus-border: $secondary-color;
+$navbar-tab-hover-border-bottom-color: $primary-color;
+$button-focus-box-shadow-color: $primary-color;
+$link-focus-border: $primary-color;
+
 
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";
@@ -39,17 +48,18 @@ body {
   font-weight: bold;
   width: 50px;
   height: 3px;
-  background: $secondary-color;
+  background: $primary-color;
   padding: 0;
   margin: 0 auto;
 }
 
 .main-hero {
-  background: linear-gradient(120deg, $secondary-color, $white);
+  background: linear-gradient(145deg, $secondary-color, $white);
   // background: $secondary-color;
 }
 
-.navbar-item.is-tab {
+.navbar-item.is-tab,
+.navbar-item {
   border-bottom: 3px solid transparent;
   @include transition(0.3s ease-in-out);
 }
@@ -63,7 +73,7 @@ body {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.5s ease;
+  transition: 0.5s ease-in-out;
   background-color: $secondary-color;
 }
 
