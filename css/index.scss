@@ -25,6 +25,18 @@ $link-focus-border: $primary-color;
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";
 
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
 @mixin transition($property) {
   -webkit-transition: $property;
   -moz-transition: $property;
@@ -54,7 +66,7 @@ body {
 }
 
 .main-hero {
-  background: linear-gradient(145deg, $secondary-color, $white);
+  background: linear-gradient(120deg, $secondary-color, $white);
   // background: $secondary-color;
 }
 
@@ -74,10 +86,27 @@ body {
   width: 100%;
   opacity: 0;
   @include transition(0.5s ease-in-out);
-  background-color: $secondary-color;
+  background-color: #363636;
 }
 
 .image:hover .overlay {
-  opacity: 0.25;
+  opacity: 0.50;
   cursor: pointer; // Remove this if pictures don't become clickable
 }
+
+/* ZOOM FEATURES - UNCOMMENT lines 98-112 FOR ZOOM */
+// .has-zoom img {
+//   max-width: 100%;
+//   @include transition(0.5s all);
+// }
+
+// .has-zoom {
+//   overflow: hidden;
+// }
+
+// .has-zoom:hover img {
+//   -moz-transform: scale(1.1);
+//   -webkit-transform: scale(1.1);
+//   transform: scale(1.1);
+//   @include transition(0.5s ease-in-out)
+// }
