@@ -42,8 +42,8 @@ app.post('/send',
             port: 465,
             secure: true,
             auth: {
-                user: 'wnxtyrael@gmail.com',
-                pass: 'trance123'
+                user: 'xxx@gmail.com',
+                pass: 'xxx'
             },
             tls: {
                 rejectUnauthorized: false
