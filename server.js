@@ -51,8 +51,8 @@ app.post('/send',
         });
 
         let mailOptions = {
-            from: '"Nick" <wnxtyrael@gmail.com>', // sender address
-            to: 'wnxtyrael@gmail.com', // list of receivers
+            from: '"Name" <email@gmail.com>', // sender address
+            to: 'email', // list of receivers
             subject: 'Test', // Subject line
             text: 'Hello', // plain text body
             html: output // html body
