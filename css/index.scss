@@ -37,6 +37,7 @@ $link-focus-border: $primary-color;
   @include transform(scale($scale));
 }
 
+
 @mixin transition($property) {
   -webkit-transition: $property;
   -moz-transition: $property;
@@ -49,10 +50,57 @@ body {
   font-family: $font-stack;
 }
 
+// To change the hamburger color on mobile
+// Change this if it becomes a problem
+a.navbar-burger {
+  color: $primary-color;
+}
+
+hr.dark {
+  border: 0;
+  height: 1px;
+  background: #4a4a4a;
+  background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+}
+
+// Button hover effect
+// Delete if unwanted
+a.button:hover {
+  background: #4a4a4a;
+  color: white;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+label::before {
+  content: "*"
+}
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.has-no-hover:hover {
+  color: none;
+}
+
+.has-small-gap {
+  margin-top: -1.75em;
+}
+
+// Apply to hero-body class
+// Use 57 for a darker grey
+.hero-image {
+  background:
+    linear-gradient(rgba(255, 255, 255, .25),
+    rgba(255, 255, 255, .25)),
+    url(../images/ExposedInteriors4_Hero.jpg);
 }
 
 .light {
@@ -68,6 +116,10 @@ body {
 .main-hero {
   background: linear-gradient(120deg, $secondary-color, $white);
   // background: $secondary-color;
+}
+
+.navbar-brand {
+  letter-spacing: .5rem;
 }
 
 .navbar-item.is-tab,
@@ -89,15 +141,28 @@ body {
   background-color: #363636;
 }
 
+.overlay-text {
+  color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateY(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .image:hover .overlay {
-  opacity: 0.50;
+  opacity: 0.75;
   cursor: pointer; // Remove this if pictures don't become clickable
 }
 
-/* ZOOM FEATURES - UNCOMMENT lines 98-112 FOR ZOOM */
+/* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 // .has-zoom img {
 //   max-width: 100%;
 //   @include transition(0.5s all);
+//   overflow: hidden;
 // }
 
 // .has-zoom {
@@ -105,8 +170,7 @@ body {
 // }
 
 // .has-zoom:hover img {
-//   -moz-transform: scale(1.1);
-//   -webkit-transform: scale(1.1);
-//   transform: scale(1.1);
-//   @include transition(0.5s ease-in-out)
+//   -webkit-backface-visibility: hidden;
+//   @include scale(1.05);
+//   @include transition(0.5s ease-in-out);
 // }

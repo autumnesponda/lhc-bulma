@@ -10642,6 +10642,39 @@ body {
   font-family: "Playfair Display", serif;
 }
 
+a.navbar-burger {
+  color: #e1bee7;
+}
+
+hr.dark {
+  border: 0;
+  height: 1px;
+  background: #4a4a4a;
+  background-image: -webkit-gradient(linear, left top, right top, from(#ccc), color-stop(#4a4a4a), to(#ccc));
+  background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
+  -webkit-margin-before: 2em;
+          margin-block-start: 2em;
+  -webkit-margin-after: 2em;
+          margin-block-end: 2em;
+}
+
+a.button:hover {
+  background: #4a4a4a;
+  color: white;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+label::before {
+  content: "*";
+}
+
 .center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10652,6 +10685,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.has-no-hover:hover {
+  color: none;
+}
+
+.has-small-gap {
+  margin-top: -1.75em;
+}
+
+.hero-image {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.25)), to(rgba(255, 255, 255, 0.25))), url(../images/ExposedInteriors4_Hero.jpg);
+  background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url(../images/ExposedInteriors4_Hero.jpg);
 }
 
 .light {
@@ -10666,6 +10712,10 @@ body {
 
 .main-hero {
   background: linear-gradient(120deg, #fff1ff, white);
+}
+
+.navbar-brand {
+  letter-spacing: .5rem;
 }
 
 .navbar-item.is-tab,
@@ -10689,10 +10739,21 @@ body {
   background-color: #363636;
 }
 
+.overlay-text {
+  color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateY(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .image:hover .overlay {
-  opacity: 0.50;
+  opacity: 0.75;
   cursor: pointer;
 }
 
-/* ZOOM FEATURES - UNCOMMENT lines 98-112 FOR ZOOM */
+/* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 /*# sourceMappingURL=index.css.map */
