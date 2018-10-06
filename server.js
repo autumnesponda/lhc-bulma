@@ -69,6 +69,6 @@ app.post('/send',
         });
 
     });
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
     console.log('Server is running at port: ', port);
 });
