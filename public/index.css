@@ -10671,10 +10671,6 @@ a.button:hover {
           transition-delay: 0s;
 }
 
-input::before {
-  content: "*";
-}
-
 .center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10685,6 +10681,12 @@ input::before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.label::after {
+  content: " *";
+  color: red;
+  font-size: .75em;
 }
 
 .has-no-hover:hover {
@@ -10748,6 +10750,10 @@ input::before {
   -webkit-transform: translateY(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.required {
+  color: red;
 }
 
 .image:hover .overlay {

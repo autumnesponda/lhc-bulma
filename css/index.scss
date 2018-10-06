@@ -76,26 +76,25 @@ a.button:hover {
   transition-delay: 0s;
 }
 
-label::before {
-  content: "*"
-}
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.label::after {
+  content: " *";
+  color: red;
+  font-size: .75em;
+}
+
 .has-no-hover:hover {
   color: none;
 }
 
+// Row gap modifier
 .has-small-gap {
   margin-top: -1.75em;
-}
-
-.test {
-  content: "*";
 }
 
 // Apply to hero-body class
@@ -155,6 +154,10 @@ label::before {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.required {
+  color: red;
 }
 
 .image:hover .overlay {
