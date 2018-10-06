@@ -25,6 +25,10 @@
     <meta name="theme-color" content="#ffffff">
     <!-- /Favicon Stuff -->
 
+    <!-- Google reCaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!-- /Google reCaptcha-->
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
     <!-- /Fonts -->
@@ -93,7 +97,7 @@
                 <div class="column is-full-tablet is-half-desktop">
                     <form action="/send" method="POST">
                         <div class="field">
-                            <label class="label">Name *</label>
+                            <label class="label">Name</label>
                             <div class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Name" name="name">
                                 <span class="icon is-small is-left">
@@ -103,7 +107,7 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Email *</label>
+                            <label class="label">Email</label>
                             <div class="control has-icons-left">
                                 <input class="input email" type="email" placeholder="Email" name="email">
                                 <span class="icon is-small is-left">
@@ -113,7 +117,7 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Subject *</label>
+                            <label class="label">Subject</label>
                             <div class="control">
                                 <div class="select">
                                     <select class="subject" name="subject">
@@ -126,20 +130,24 @@
                             </div>
                         </div>
 
+
                         <div class="field">
-                            <label class="label">Message *</label>
+                            <label class="label">Message</label>
                             <div class="control">
                                 <textarea class="textarea" placeholder="Message" name="message"></textarea>
                             </div>
                         </div>
-
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button" type="submit">Submit</button>
-                            </div>
-                        </div>
                         <div class="content">
-                            <p class="is-size-7">Fields marked with an asterisk are required</p>
+                            <p class="is-size-7">Fields marked with an asterisk (*) are required</p>
+                        </div>
+                        <div class="field">
+                            <div class="g-recaptcha" data-sitekey="6Lexu3MUAAAAALidxEDHb6xjZechtr3fWNeDaAMO"></div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button submit" type="submit">Submit</button>
+                            </div>
                         </div>
                 </div>
 
