@@ -1,0 +1,6 @@
+{
+    "username": "user@domain.com",
+    "password": "myPassword",
+    "to": "someUser@email.com",
+    "from": "somebody@email.com"
+}
