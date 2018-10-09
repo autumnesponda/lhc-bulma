@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 var port = 3000;
 
 app.get("/", function (req, res) {
-  res.redirect("index");
+  res.render("index");
 });
 
 app.get("/contact", function (req, res) {
