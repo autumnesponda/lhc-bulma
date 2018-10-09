@@ -165,6 +165,10 @@ hr.dark {
   font-size: 5em;
 }
 
+.is-huge {
+  font-size: 10em;
+}
+
 .is-fancy {
   font-family: $header-font;
 }
@@ -176,7 +180,7 @@ hr.dark {
 
 .fullheight-hero-img {
   background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
-    url(../images/fullheight_hero.jpg);
+    url(../images/fullheight_hero1a.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -208,6 +212,12 @@ hr.dark {
   height: 100%;
   width: 100%;
   @include transition(0.25s ease-in-out);
+}
+
+.oh-no {
+  position: relative;
+  left: -20px;
+  top: 0px;
 }
 
 .image:hover .overlay {

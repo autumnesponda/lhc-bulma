@@ -10739,6 +10739,10 @@ hr.dark {
   font-size: 5em;
 }
 
+.is-huge {
+  font-size: 10em;
+}
+
 .is-fancy {
   font-family: "Amatic SC", cursive;
 }
@@ -10749,8 +10753,8 @@ hr.dark {
 }
 
 .fullheight-hero-img {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(74, 74, 74, 0.5)), to(rgba(74, 74, 74, 0.5))), url(../images/fullheight_hero.jpg);
-  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)), url(../images/fullheight_hero.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(74, 74, 74, 0.5)), to(rgba(74, 74, 74, 0.5))), url(../images/fullheight_hero1a.jpg);
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)), url(../images/fullheight_hero1a.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10782,6 +10786,12 @@ hr.dark {
   width: 100%;
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
+}
+
+.oh-no {
+  position: relative;
+  left: -20px;
+  top: 0px;
 }
 
 .image:hover .overlay {
