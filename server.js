@@ -82,11 +82,11 @@ app.post("/send", function (req, res) {
 });
 
 // 404
-app.use(function (req, res, next) {
-  return res.status(404).send({
-    message: 'Route ' + req.url + ' Not found.'
-  });
-});
+// app.use(function (req, res, next) {
+//   return res.status(404).send({
+//     message: 'Route ' + req.url + ' Not found.'
+//   });
+// });
 
 app.listen(process.env.PORT || port, function () {
   console.log("Server is running at port: ", port);
