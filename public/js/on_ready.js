@@ -7,4 +7,8 @@ $(document).ready(function () {
         $(".navbar-burger").toggleClass("is-active");
         $(".navbar-menu").toggleClass("is-active");
     });
+
+    $("#hinge").mouseover(function () {
+        $("#hinge").addClass("animated hinge");
+    });
 });
