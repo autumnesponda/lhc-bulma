@@ -62,7 +62,7 @@ app.post("/send", function (req, res) {
   });
 
   let mailOptions = {
-    from: '"Contact" <email@domain.com>', // sender address
+    from: `Contact ${config.from}`, // sender address
     to: config.to, // list of receivers
     subject: "New Inquiry", // Subject line
     text: "", // plain text body
@@ -82,11 +82,28 @@ app.post("/send", function (req, res) {
 });
 
 // 404
-// app.use(function (req, res, next) {
-//   return res.status(404).send({
-//     message: 'Route ' + req.url + ' Not found.'
-//   });
-// });
+app.use(function (req, res, next) {
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', {
+      url: req.url
+    });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({
+      error: 'Not found'
+    });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
+});
 
 app.listen(process.env.PORT || port, function () {
   console.log("Server is running at port: ", port);
