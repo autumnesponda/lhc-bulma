@@ -1,6 +1,9 @@
-// Custom Variables
-$font-stack: "Playfair Display",
-serif;
+// // Custom Variables
+$font-stack: 'Raleway',
+sans-serif;
+
+$header-font: 'Amatic SC',
+cursive;
 
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
@@ -8,19 +11,18 @@ serif;
 // $dark-color: #45454b;
 
 // Google Color Palette
-$primary-color: #e1bee7;
-$secondary-color: #fff1ff;
-$gradient-three: #f3e5f5;
-$dark-color: #af8eb5;
+$primary-color: #f5deff;
+$secondary-color: #e3c0f2;
+$color-three: #be98c9;
+$dark-color: #7a5e80;
 // End Custom Variables
 
 /* BULMA OVERRIDES */
-$navbar-item-hover-color: $dark-color;
+$navbar-item-hover-color: $color-three;
 $navbar-item-hover-background-color: none;
-$navbar-tab-hover-border-bottom-color: $primary-color;
+$navbar-tab-hover-border-bottom-color: $color-three;
 $button-focus-box-shadow-color: $primary-color;
 $link-focus-border: $primary-color;
-
 
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";
@@ -37,12 +39,50 @@ $link-focus-border: $primary-color;
   @include transform(scale($scale));
 }
 
-
 @mixin transition($property) {
   -webkit-transition: $property;
   -moz-transition: $property;
   -o-transition: $property;
   transition: $property;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: #{$animation};
+  -moz-animation: #{$animation};
+  -ms-animation: #{$animation};
+  animation: #{$animation};
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(pulseUpDown) {
+  0% {
+    @include transform(translateY(0));
+  }
+
+  50% {
+    @include transform(translateY(-12px));
+  }
+
+  100% {
+    @include transform(translateY(0));
+  }
 }
 
 /* MAIN CSS */
@@ -53,28 +93,42 @@ body {
 // To change the hamburger color on mobile
 // Change this if it becomes a problem
 a.navbar-burger {
-  color: $primary-color;
+  color: #4a4a4a;
+}
+
+.fa-chevron-down:hover {
+  color: $dark-color;
+  cursor: pointer;
+}
+
+.arrow-down {
+  @include animation(pulseUpDown 1.2s infinite ease-in-out normal);
+  padding-bottom: .5em;
 }
 
 hr.dark {
   border: 0;
   height: 1px;
   background: #4a4a4a;
-  background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
+  // background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
   margin-block-start: 2em;
   margin-block-end: 2em;
 }
 
+.about {
+  background: $dark-color;
+}
+
 // Button hover effect
 // Delete if unwanted
-a.button:hover {
-  background: #4a4a4a;
-  color: white;
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-}
+// a.button:hover {
+//   background: #4a4a4a;
+//   color: white;
+//   transition-property: all;
+//   transition-duration: 0.3s;
+//   transition-timing-function: ease;
+//   transition-delay: 0s;
+// }
 
 .center {
   display: flex;
@@ -82,14 +136,9 @@ a.button:hover {
   align-items: center;
 }
 
-.label::after {
+.label:after {
   content: " *";
   color: red;
-  font-size: .75em;
-}
-
-.has-no-hover:hover {
-  color: none;
 }
 
 // Row gap modifier
@@ -97,38 +146,57 @@ a.button:hover {
   margin-top: -1.75em;
 }
 
+.has-letter-spacing {
+  letter-spacing: 0.15em;
+}
+
 // Apply to hero-body class
 // Use 57 for a darker grey
 .hero-image {
-  background:
-    linear-gradient(rgba(255, 255, 255, .25),
-    rgba(255, 255, 255, .25)),
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
     url(../images/ExposedInteriors4_Hero.jpg);
 }
 
-.light {
-  border: none;
-  font-weight: bold;
-  width: 50px;
-  height: 3px;
-  background: $primary-color;
-  padding: 0;
-  margin: 0 auto;
+.is-large {
+  font-size: 4em;
+}
+
+.is-extra-large {
+  font-size: 5em;
+}
+
+.is-fancy {
+  font-family: $header-font;
+}
+
+.button.is-rounded {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.fullheight-hero-img {
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
+    url(../images/fullheight_hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  // filter: blur(3px);
 }
 
 .main-hero {
-  background: linear-gradient(120deg, $secondary-color, $white);
+  background: linear-gradient(120deg, $primary-color, $white);
   // background: $secondary-color;
 }
 
 .navbar-brand {
-  letter-spacing: .5rem;
+  letter-spacing: 0.25rem;
 }
 
 .navbar-item.is-tab,
 .navbar-item {
   border-bottom: 3px solid transparent;
-  @include transition(0.3s ease-in-out);
+  @include transition(0.25s ease-in-out);
 }
 
 .overlay {
@@ -139,14 +207,17 @@ a.button:hover {
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
-  @include transition(0.5s ease-in-out);
-  background-color: #363636;
+  @include transition(0.25s ease-in-out);
+}
+
+.image:hover .overlay {
+  background-color: rgba(74, 74, 74, 0.75);
+  cursor: pointer; // Remove this if pictures don't become clickable
 }
 
 .overlay-text {
   color: white;
-  font-size: 50px;
+  font-size: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -154,30 +225,21 @@ a.button:hover {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
-}
-
-.required {
-  color: red;
-}
-
-.image:hover .overlay {
-  opacity: 0.75;
-  cursor: pointer; // Remove this if pictures don't become clickable
+  opacity: 1;
 }
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 // .has-zoom img {
-//   max-width: 100%;
-//   @include transition(0.5s all);
-//   overflow: hidden;
+// max-width: 100%;
+// @include transition(0.5s all);
+// overflow: hidden;
 // }
-
 // .has-zoom {
 //   overflow: hidden;
 // }
 
 // .has-zoom:hover img {
-//   -webkit-backface-visibility: hidden;
-//   @include scale(1.05);
-//   @include transition(0.5s ease-in-out);
+// -webkit-backface-visibility: hidden;
+// @include scale(1.05);
+// @include transition(0.5s ease-in-out);
 // }
