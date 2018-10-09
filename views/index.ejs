@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="has-navbar-fixed-top">
+<html lang="en" class="">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/index.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- <link rel="stylesheet" href="/debug.css"> -->
     <!-- /Stylesheets -->
 
@@ -26,6 +27,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
     <!-- /Fonts -->
 
     <!-- FontAwesome -->
@@ -45,7 +48,7 @@
     <!-- Nav -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item has-no-hover" href="/">
+            <a class="navbar-item" href="/">
                 Little House Creative
             </a>
             <!-- Burger Menu -->
@@ -58,7 +61,7 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a href="#" class="navbar-item is-tab">Portfolio</a>
+                <a href="/gallery" class="navbar-item is-tab">Gallery</a>
                 <a href="#" class="navbar-item is-tab">Services</a>
                 <a href="#" class="navbar-item is-tab">About</a>
                 <a href="/contact" class="navbar-item is-tab">Contact</a>
@@ -68,106 +71,29 @@
     <!-- /Nav -->
 
     <!-- Hero -->
-    <section class="hero main-hero">
+    <section class="hero animated fadeIn is-fullheight fullheight-hero-img">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <figure class="image center">
+                <!-- <figure class="image center">
                     <img src="./images/LHCLogoTight.png" alt="LHC-Logo" style="max-width: 687.64px">
-                </figure>
-                <h2 class="subtitle has-text-centered is-uppercase is-size-4 is-size-6-mobile">
+                </figure> -->
+                <!-- <figure class="image center"><img src="./images/GetCreativeColorless.png" alt="LHC Logo"></figure> -->
+                <h1 class="title has-text-white is-extra-large">Little House Creative</h1>
+                <hr>
+                <h2 class="subtitle hero-subtitle has-text-centered has-text-white is-uppercase is-size-4-desktop is-size-5-tablet is-size-6-mobile">
                     Interior design by Nicole Maisonet-West
                 </h2>
             </div>
         </div>
-    </section>
-    <!-- /Hero -->
-    <!-- Portfolio Section -->
-    <section class="section">
-        <div class="container" id="portfolio">
-            <h1 class="title is-size-2 has-text-centered" data-aos="fade-up">Portfolio</h1>
-            <!-- <hr class="light"> -->
-            <!-- First Row -->
-            <div class="columns is-variable is-1 is-multiline">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/cepeda_guest1.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/GuestRoom2.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/MasterBedroom3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- /First Row -->
-            <!-- Second Row -->
-            <div class="columns is-variable is-1 is-multiline has-small-gap">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/20171107_185606.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/Main wall 3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/ExposedInteriors5 (1).jpg">
-                        <div class="overlay">
-                            <div class="overlay-text">
-                                Testing 123
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- /Second Row -->
-            <div class="container center">
-                <a href="#" class="button is-medium">
-                    <span>View My Gallery</span>
-                    <span class="icon">
-                        <i class="fas fa-angle-right"></i>
-                    </span>
-                </a>
-            </div>
+        <script src="../public/js/scroll.js"></script>
+        <div class="container has-text-centered">
+            <span id="scroll-button" class="is-hidden-mobile"><i class="fas fa-chevron-down fa-3x has-text-white arrow-down"></i></span>
         </div>
     </section>
-    <!-- /Portfolio Section -->
+    <!-- /Hero -->
     <!-- Services Section -->
-    <section class="section">
-        <div class="container" id="services">
+    <section class="section" id="services">
+        <div class="container">
             <h1 class="title is-size-2 has-text-centered" data-aos="fade-left">Services</h1>
             <!-- <hr class="light"> -->
             <!-- DELETE THIS CONTAINER FOR FULL WIDTH -->
@@ -175,8 +101,8 @@
                 <div class="columns is-multiline">
                     <div class="column is-half-tablet is-one-quarter-desktop">
                         <div class="content">
-                            <h1 class="title">Custom Services</h1>
-                            <p class="has-text-justified">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
+                            <h1 class="title has-text-centered">Custom Services</h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
                                 magnam
                                 culpa voluptates illo
                                 numquam
@@ -187,8 +113,8 @@
                     </div>
                     <div class="column is-half-tablet is-one-quarter-desktop">
                         <div class="content">
-                            <h1 class="title">Custom Services</h1>
-                            <p class="has-text-justified">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
+                            <h1 class="title has-text-centered">Custom Services</h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
                                 magnam
                                 culpa voluptates illo
                                 numquam
@@ -199,8 +125,8 @@
                     </div>
                     <div class="column is-half-tablet is-one-quarter-desktop">
                         <div class="content">
-                            <h1 class="title">Custom Services</h1>
-                            <p class="has-text-justified">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
+                            <h1 class="title has-text-centered">Custom Services</h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
                                 magnam
                                 culpa voluptates illo
                                 numquam
@@ -211,8 +137,8 @@
                     </div>
                     <div class="column is-half-tablet is-one-quarter-desktop">
                         <div class="content">
-                            <h1 class="title">Custom Services</h1>
-                            <p class="has-text-justified">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
+                            <h1 class="title has-text-centered">Custom Services</h1>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex
                                 magnam
                                 culpa voluptates illo
                                 numquam
@@ -223,7 +149,7 @@
                     </div>
                 </div>
                 <div class="container center">
-                    <a href="/contact" class="button is-medium">
+                    <a href="/contact" class="button is-medium is-rounded is-dark has-letter-spacing">
                         <span>Contact Me</span>
                         <span class="icon">
                             <i class="fas fa-angle-right"></i>
@@ -235,16 +161,17 @@
     </section>
     <!-- /Services Section -->
     <!-- About Section -->
-    <section class="section">
+    <section class="section about has-text-white">
         <div class="container" id="about">
-            <h1 class="title is-size-2 has-text-centered" data-aos="fade-up">About</h1>
+            <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-up">About</h1>
             <!-- <hr class="light"> -->
             <div class="container">
                 <div class="columns">
                     <div class="column">
                         <div class="content">
-                            <h3 class="title is-uppercase has-text-centered">Simple. Inexpensive. Sanctuary.</h3>
-                            <p class="has-text-justified">
+                            <h3 class="title is-uppercase has-text-centered has-text-white">Simple. Inexpensive.
+                                Sanctuary.</h3>
+                            <p>
                                 I like to expose the beauty of an item that seems to have lost its way. Show the charm.
                                 Expand
                                 the
@@ -265,7 +192,7 @@
                                 come real
                                 close to magazine quality with Swedish materials?
                             </p>
-                            <p class="has-text-justified">
+                            <p>
                                 I went back to get my degree in Interior Design from the School of Visual Arts after I
                                 already
                                 had
@@ -312,8 +239,8 @@
         </div>
         <div class="columns">
             <div class="column has-text-centered center">
-                <a href="#" class="navbar-item">Sitemap</a>
-                <a href="/privacy-policy" class="navbar-item">Privacy Policy</a>
+                <a href="#" class="navbar-item has-text-weight-semibold">Sitemap</a>
+                <a href="/privacy-policy" class="navbar-item has-text-weight-semibold">Privacy Policy</a>
             </div>
         </div>
     </footer>
