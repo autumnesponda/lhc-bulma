@@ -31,6 +31,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
     <!-- /Fonts -->
 
     <!-- FontAwesome -->
@@ -63,7 +64,7 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a href="#" class="navbar-item is-tab">Portfolio</a>
+                <a href="/gallery" class="navbar-item is-tab">Gallery</a>
                 <a href="#" class="navbar-item is-tab">Services</a>
                 <a href="#" class="navbar-item is-tab">About</a>
                 <a href="/contact" class="navbar-item is-tab">Contact</a>
@@ -73,10 +74,10 @@
     <!-- /Nav -->
 
     <!-- Hero -->
-    <section class="hero is-medium">
+    <section class="hero animated fadeIn is-medium">
         <div class="hero-body hero-image">
             <div class="container">
-                <h1 class="title has-text-centered is-uppercase is-size-1">
+                <h1 class="title has-text-centered is-uppercase is-size-1 has-text-white">
                     Contact Me
                 </h1>
             </div>
@@ -95,25 +96,52 @@
             </div>
             <div class="columns is-variable is-8 is-multiline">
                 <div class="column is-full-tablet is-half-desktop">
+
+                    <!-- Success Message -->
+                    <% if (msg) { %>
+                    <div class="notification is-success has-text-centered">
+                        <button class="delete"></button>
+                        <%= msg %>
+                    </div>
+                    <% } %>
+                    <!-- /Success Message -->
+
                     <form action="/send" method="POST">
                         <div class="field">
                             <label class="label">Name</label>
                             <div class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Name" name="name">
+                                <input class="input" type="text" placeholder="Name" name="name" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger name-invalid is-hidden">Name is required</p>
                         </div>
 
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control has-icons-left">
-                                <input class="input email" type="email" placeholder="Email" name="email">
+                                <input class="input email" type="email" placeholder="Email" name="email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
                             </div>
+                            <p class="help is-danger email-invalid is-hidden">This email is invalid</p>
+                            <p class="help is-success email-valid is-hidden">This email is valid</p>
+                            <p class="help is-danger email-missing is-hidden">Email is required</p>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Phone</label>
+                            <div class="control has-icons-left">
+                                <input class="input phone" type="tel" placeholder="Telephone" name="telephone" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger email-invalid is-hidden">This email is invalid</p>
+                            <p class="help is-success email-valid is-hidden">This email is valid</p>
+                            <p class="help is-danger email-missing is-hidden">Email is required</p>
                         </div>
 
                         <div class="field">
@@ -121,10 +149,11 @@
                             <div class="control">
                                 <div class="select">
                                     <select class="subject" name="subject">
-                                        <option>Services</option>
-                                        <option>General Information</option>
-                                        <option>Pricing</option>
-                                        <option>Other...</option>
+                                        <option value=""></option>
+                                        <option value="services">Services</option>
+                                        <option value="general information">General Information</option>
+                                        <option value="pricing">Pricing</option>
+                                        <option value="other">Other...</option>
                                     </select>
                                 </div>
                             </div>
@@ -137,9 +166,11 @@
                                 <textarea class="textarea" placeholder="Message" name="message"></textarea>
                             </div>
                         </div>
+
                         <div class="content">
                             <p class="is-size-7">Fields marked with an asterisk (*) are required</p>
                         </div>
+
                         <div class="field">
                             <div class="g-recaptcha" data-sitekey="6Lexu3MUAAAAALidxEDHb6xjZechtr3fWNeDaAMO"></div>
                         </div>
@@ -147,6 +178,7 @@
                         <div class="field">
                             <div class="control">
                                 <button class="button submit" type="submit">Submit</button>
+                                <button class="button" type="reset">Reset</button>
                             </div>
                         </div>
                 </div>
