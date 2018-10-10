@@ -18,6 +18,8 @@ $dark-color: #7a5e80;
 // End Custom Variables
 
 /* BULMA OVERRIDES */
+$body-background-color: #fafafa;
+$navbar-background-color: #fafafa;
 $navbar-item-hover-color: $color-three;
 $navbar-item-hover-background-color: none;
 $navbar-tab-hover-border-bottom-color: $color-three;
@@ -237,6 +239,7 @@ hr.dark {
   text-align: center;
   opacity: 1;
 }
+
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 // .has-zoom img {
