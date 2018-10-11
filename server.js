@@ -1,6 +1,7 @@
 var express = require("express"),
   nodeMailer = require("nodemailer"),
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+  request = require("request");
 
 var config = require("./config.json");
 
@@ -35,7 +36,30 @@ app.get("/gallery", function (req, res) {
 });
 
 app.post("/send", function (req, res) {
-  const output = `
+  // g-recaptcha-response is the key that browser will generate upon form submit.
+  // if its blank or null means user has not selected the captcha, so return the error.
+  if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+    return res.json({
+      "responseCode": 1,
+      "responseDesc": "Please select captcha"
+    });
+  }
+  // Put your secret key here.
+  var secretKey = config.secretKey;
+  // req.connection.remoteAddress will provide IP address of connected user.
+  var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+  // Hitting GET request to the URL, Google will respond with success or error scenario.
+  request(verificationUrl, function (error, response, body) {
+    body = JSON.parse(body);
+    // Success will be true or false depending upon captcha validation.
+    if (body.success !== undefined && !body.success) {
+      return res.json({
+        "responseCode": 1,
+        "responseDesc": "Failed captcha verification"
+      });
+    }
+    if (!error) {
+      const output = `
     <p><strong>You have a new inquiry!</strong></p>
     <h3>Contact Details</h3>
     <ul>
@@ -48,36 +72,38 @@ app.post("/send", function (req, res) {
     <p>${req.body.message}</p>
     `;
 
-  let transporter = nodeMailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: config.username,
-      pass: config.password
-    },
-    tls: {
-      rejectUnauthorized: false
+      let transporter = nodeMailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: config.username,
+          pass: config.password
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      });
+
+      let mailOptions = {
+        from: `Contact ${config.from}`, // sender address
+        to: config.to, // list of receivers
+        subject: "New Inquiry", // Subject line
+        text: "", // plain text body
+        html: output // html body
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+
+        console.log("Message %s sent: %s", info.messageId, info.response);
+        res.render("contact", {
+          msg: "Email has been sent successfully!"
+        });
+      });
     }
-  });
-
-  let mailOptions = {
-    from: `Contact ${config.from}`, // sender address
-    to: config.to, // list of receivers
-    subject: "New Inquiry", // Subject line
-    text: "", // plain text body
-    html: output // html body
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-
-    console.log("Message %s sent: %s", info.messageId, info.response);
-    res.render("contact", {
-      msg: "Email has been sent successfully!"
-    });
   });
 });
 
