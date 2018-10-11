@@ -9,7 +9,6 @@
     <meta name="keywords" content="interior design, interior designer, home, home design, crafts, custom, orlando design, orlando designer">
 
     <!-- Stylesheets -->
-    <!-- <link rel="stylesheet" href="/index.css"> -->
     <link rel="stylesheet" href="index.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
@@ -99,19 +98,35 @@
                 <div class="column is-full-tablet is-half-desktop">
 
                     <!-- Success Message -->
-                    <% if (msg) { %>
-                    <div class="notification is-success has-text-centered">
+                    <% if (data.msg) { %>
+                    <div class="notification is-success has-text-centered success-notification">
                         <button class="delete"></button>
-                        <%= msg %>
+                        <%= data.msg %>
                     </div>
                     <% } %>
                     <!-- /Success Message -->
+
+                    <!-- Error Message -->
+                    <% if (data.errors) { %>
+                    <div class="notification is-danger has-text-centered error-notification">
+                        <button class="delete"></button>
+                        <%= data.errorMsg %>
+                        <ul>
+                            <% for(let i = 0; i < data.errors.length; i++) { %>
+                            <li>
+                                <%= data.errors[i].msg %>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %>
+                    <!-- /Error Message -->
 
                     <form action="/send" method="POST">
                         <div class="field">
                             <label class="label">Name</label>
                             <div class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Name" name="name" required>
+                                <input class="input" type="text" placeholder="Name" name="name">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -122,7 +137,7 @@
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control has-icons-left">
-                                <input class="input email" type="email" placeholder="Email" name="email" required>
+                                <input class="input email" type="email" placeholder="Email" name="email">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -135,7 +150,7 @@
                         <div class="field">
                             <label class="label">Phone</label>
                             <div class="control has-icons-left">
-                                <input class="input phone" type="tel" placeholder="Telephone" name="telephone" required>
+                                <input class="input phone" type="tel" placeholder="Telephone" name="telephone">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-phone"></i>
                                 </span>
