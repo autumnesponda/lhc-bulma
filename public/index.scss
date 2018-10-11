@@ -2,9 +2,6 @@
 $font-stack: 'Raleway',
 sans-serif;
 
-$header-font: 'Amatic SC',
-cursive;
-
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
 // $secondary-color: #e8e8fa;
@@ -169,10 +166,6 @@ hr.dark {
 
 .is-huge {
   font-size: 10em;
-}
-
-.is-fancy {
-  font-family: $header-font;
 }
 
 .button.is-rounded {
