@@ -222,23 +222,30 @@ hr.dark {
   top: 0px;
 }
 
+.overlay-text {
+  display: none;
+}
+
 .image:hover .overlay {
   background-color: rgba(74, 74, 74, 0.75);
   cursor: pointer; // Remove this if pictures don't become clickable
+
+  .overlay-text {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 1;
+    display: block;
+  }
 }
 
-.overlay-text {
-  color: white;
-  font-size: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateY(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-  opacity: 1;
-}
+
 
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */

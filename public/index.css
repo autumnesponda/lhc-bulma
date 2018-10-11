@@ -10794,12 +10794,16 @@ hr.dark {
   top: 0px;
 }
 
+.overlay-text {
+  display: none;
+}
+
 .image:hover .overlay {
   background-color: rgba(74, 74, 74, 0.75);
   cursor: pointer;
 }
 
-.overlay-text {
+.image:hover .overlay .overlay-text {
   color: white;
   font-size: 30px;
   position: absolute;
@@ -10809,6 +10813,7 @@ hr.dark {
   transform: translate(-50%, -50%);
   text-align: center;
   opacity: 1;
+  display: block;
 }
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
