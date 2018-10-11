@@ -1,11 +1,15 @@
 var express = require("express"),
   nodeMailer = require("nodemailer"),
   bodyParser = require("body-parser"),
-  request = require("request");
+  request = require("request"),
+  cookieParser = require("cookie-parser"),
+  session = require("express-session");
 
 var config = require("./config.json");
 
 var app = express();
+const expressValidator = require("express-validator");
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(
@@ -15,15 +19,28 @@ app.use(
 );
 app.use(bodyParser.json());
 
+// Express Validator
+app.use(expressValidator());
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "lhc",
+    saveUninitialized: false,
+    resave: false
+  })
+);
+// End Express Validator
+
 var port = 3000;
 
+// Routes
 app.get("/", function (req, res) {
   res.render("index");
 });
 
 app.get("/contact", function (req, res) {
   res.render("contact", {
-    msg: ""
+    data: {}
   });
 });
 
@@ -35,29 +52,80 @@ app.get("/gallery", function (req, res) {
   res.render("gallery");
 });
 
+app.get("/send", function (req, res) {
+  res.redirect(303, "contact");
+})
+// End Routes
+
 app.post("/send", function (req, res) {
+  let name = req.body.name;
+  let email = req.body.email;
+  let telepone = req.body.telephone;
+  let subject = req.body.subject;
+
+  // Set the fields
+  req.checkBody("name", "Name is required").notEmpty();
+  req.checkBody("email", "Email is required").notEmpty();
+  req.checkBody("email", "Enter a valid email address").isEmail();
+  req.checkBody("telephone", "Telephone is required").notEmpty();
+  req
+    .checkBody("telephone", "Enter a valid phone number")
+    .isMobilePhone("en-US");
+
+  // If there's form validation errors, render the contact page and produce the errors
+  var errors = req.validationErrors();
+  if (errors) {
+    console.log(errors);
+    req.session.errors = errors;
+    req.session.success = false;
+    res.render("contact", {
+      data: {
+        errors: errors,
+        errorMsg: "Please correct the following errors:"
+      }
+    });
+    return;
+  }
+
   // g-recaptcha-response is the key that browser will generate upon form submit.
   // if its blank or null means user has not selected the captcha, so return the error.
-  if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
-    return res.json({
-      "responseCode": 1,
-      "responseDesc": "Please select captcha"
+  if (
+    req.body["g-recaptcha-response"] === undefined ||
+    req.body["g-recaptcha-response"] === "" ||
+    req.body["g-recaptcha-response"] === null
+  ) {
+    res.render("contact", {
+      data: {
+        errorMsg: "Please complete the Captcha",
+        errors: true
+      }
     });
+    return;
   }
   // Put your secret key here.
   var secretKey = config.secretKey;
   // req.connection.remoteAddress will provide IP address of connected user.
-  var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+  var verificationUrl =
+    "https://www.google.com/recaptcha/api/siteverify?secret=" +
+    secretKey +
+    "&response=" +
+    req.body["g-recaptcha-response"] +
+    "&remoteip=" +
+    req.connection.remoteAddress;
   // Hitting GET request to the URL, Google will respond with success or error scenario.
   request(verificationUrl, function (error, response, body) {
     body = JSON.parse(body);
     // Success will be true or false depending upon captcha validation.
+    // If the user fails the Captcha
     if (body.success !== undefined && !body.success) {
-      return res.json({
-        "responseCode": 1,
-        "responseDesc": "Failed captcha verification"
+      res.render("contact", {
+        data: {
+          errors: true,
+          errorMsg: "Captcha verification failed"
+        }
       });
     }
+    // If there's no errors with the Captcha
     if (!error) {
       const output = `
     <p><strong>You have a new inquiry!</strong></p>
@@ -72,6 +140,7 @@ app.post("/send", function (req, res) {
     <p>${req.body.message}</p>
     `;
 
+      // Set the transporter settings for NodeMailer
       let transporter = nodeMailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -85,6 +154,7 @@ app.post("/send", function (req, res) {
         }
       });
 
+      // Set the mail options for NodeMailer
       let mailOptions = {
         from: `Contact ${config.from}`, // sender address
         to: config.to, // list of receivers
@@ -100,7 +170,9 @@ app.post("/send", function (req, res) {
 
         console.log("Message %s sent: %s", info.messageId, info.response);
         res.render("contact", {
-          msg: "Email has been sent successfully!"
+          data: {
+            msg: "Email has been sent successfully!"
+          }
         });
       });
     }
@@ -112,23 +184,23 @@ app.use(function (req, res, next) {
   res.status(404);
 
   // respond with html page
-  if (req.accepts('html')) {
-    res.render('404', {
+  if (req.accepts("html")) {
+    res.render("404", {
       url: req.url
     });
     return;
   }
 
   // respond with json
-  if (req.accepts('json')) {
+  if (req.accepts("json")) {
     res.send({
-      error: 'Not found'
+      error: "Not found"
     });
     return;
   }
 
   // default to plain-text. send()
-  res.type('txt').send('Not found');
+  res.type("txt").send("Not found");
 });
 
 app.listen(process.env.PORT || port, function () {
