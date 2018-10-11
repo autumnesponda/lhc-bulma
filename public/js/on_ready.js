@@ -11,4 +11,9 @@ $(document).ready(function () {
     $("#hinge").mouseover(function () {
         $("#hinge").addClass("animated hinge");
     });
+
+    $(".delete").click(function () {
+        $(".success-notification").fadeOut("slow");
+        $(".error-notification").fadeOut("slow");
+    })
 });
