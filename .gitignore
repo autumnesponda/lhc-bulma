@@ -4,3 +4,4 @@ node_modules/
 # Files
 purgecss.config.js
 index_fixed.ejs
+config.json
