@@ -10669,7 +10669,7 @@ label.panel-block:hover {
 
 /* MAIN CSS */
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Muli", sans-serif;
 }
 
 a.navbar-burger {
@@ -10788,6 +10788,7 @@ hr.dark {
   position: relative;
   left: -20px;
   top: 0px;
+  margin-right: -40px;
 }
 
 .overlay-text {

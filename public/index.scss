@@ -2,6 +2,9 @@
 $font-stack: 'Raleway',
 sans-serif;
 
+$alt-font: 'Muli',
+sans-serif;
+
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
 // $secondary-color: #e8e8fa;
@@ -86,7 +89,7 @@ $link-focus-border: $primary-color;
 
 /* MAIN CSS */
 body {
-  font-family: $font-stack;
+  font-family: $alt-font;
 }
 
 // To change the hamburger color on mobile
@@ -213,6 +216,7 @@ hr.dark {
   position: relative;
   left: -20px;
   top: 0px;
+  margin-right: -40px;
 }
 
 .overlay-text {
