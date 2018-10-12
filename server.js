@@ -52,8 +52,8 @@ app.get("/gallery", function (req, res) {
   res.render("gallery");
 });
 
-app.get("/send", function (req, res) {
-  res.redirect(303, "contact");
+app.get("/admin", function (req, res) {
+  res.render("admin");
 })
 // End Routes
 
