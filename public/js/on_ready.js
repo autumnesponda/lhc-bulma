@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     $("#hinge").mouseover(function () {
-        $("#hinge").addClass("animated hinge");
+        $("#hinge").addClass("animated hinge slower delay-2s");
     });
 
     $(".delete").click(function () {
