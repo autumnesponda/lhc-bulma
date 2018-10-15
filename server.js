@@ -15,6 +15,13 @@ app.use(
 );
 app.use(bodyParser.json());
 
+// START things i've added hmmm
+var urlencodedParser = bodyParser.urlencoded({extended:false});
+const mongoose = require('mongoose');
+var url = 'mongodb://localhost:27017';
+User = require('user-model.js');
+// END things i've added
+
 var port = 3000;
 
 app.get("/", function (req, res) {
@@ -35,8 +42,12 @@ app.get("/gallery", function (req, res) {
   res.render("gallery");
 });
 
-app.get("/fileUploadTest", function (req, res) {
-  res.render("fileUploadTest");
+app.get("/admin", function (req, res) {
+   res.render("admin");
+});
+
+app.get("/register", function (req, res) {
+  res.render("register");
 });
 
 app.post("/send", function (req, res) {
@@ -109,6 +120,47 @@ app.post("/send", function (req, res) {
       });
     }
   });
+});
+
+app.post('/registerToDb', urlencodedParser, (req, res) => {
+    console.log(req.body.email);
+
+
+    mongoose.connect(url, (err) => {
+        if (err) throw err;
+        // db.collection('admin').insertOne(jsonObj);
+        var user = User({
+            username: req.body.email,
+            password: req.body.password
+        });
+
+        user.save(function (err) {
+            if (err) throw err;
+        });
+
+    });
+
+});
+
+app.post('/login', urlencodedParser, (req, res) => {
+    debugger;
+    mongoose.connect(url, (err) => {
+        if (err) throw err;
+
+        User.findOne({username: req.body.email}, (err, user) => {
+            if (err) throw err;
+
+            if (!user)
+                return;
+
+            user.comparePassword(req.body.password, (err, isMatch) => {
+
+                if (err) throw err;
+                if (isMatch)
+                    res.send('/');
+            });
+        });
+    });
 });
 
 // 404
