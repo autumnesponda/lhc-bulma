@@ -123,9 +123,6 @@ app.post("/send", function (req, res) {
 });
 
 app.post('/registerToDb', urlencodedParser, (req, res) => {
-    console.log(req.body.email);
-
-
     mongoose.connect(url, (err) => {
         if (err) throw err;
         // db.collection('admin').insertOne(jsonObj);
@@ -143,7 +140,9 @@ app.post('/registerToDb', urlencodedParser, (req, res) => {
 });
 
 app.post('/login', urlencodedParser, (req, res) => {
-    debugger;
+    // console.log(req);
+
+    //
     mongoose.connect(url, (err) => {
         if (err) throw err;
 
@@ -156,8 +155,10 @@ app.post('/login', urlencodedParser, (req, res) => {
             user.comparePassword(req.body.password, (err, isMatch) => {
 
                 if (err) throw err;
-                if (isMatch)
-                    res.send('/');
+                if (isMatch) {
+                    console.log("bazinga");
+                    res.render('index');
+                }
             });
         });
     });

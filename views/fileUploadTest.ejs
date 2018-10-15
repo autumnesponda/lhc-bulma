@@ -92,6 +92,10 @@
             <input type="file"
                    accept="image/*"
                    >
+            <button class="button is-rounded"
+                    onclick=submitFileUploadClicked(event)>
+                submit
+            </button>
         </div>
     </div>
 </section>
@@ -132,6 +136,13 @@
 <script src="./js/on_ready.js"></script>
 <script src="./js/scroll.js"></script>
 <!-- /JS Files -->
+
+<script>
+    function submitFileUploadClicked(event) {
+        console.log("Time to upload!");
+        console.log(event.toString());
+    }
+</script>
 
 <!-- Load AOS Script -->
 <script>
