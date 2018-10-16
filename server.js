@@ -124,6 +124,7 @@ app.post("/send", function (req, res) {
           errorMsg: "Captcha verification failed"
         }
       });
+      return;
     }
     // If there's no errors with the Captcha
     if (!error) {
