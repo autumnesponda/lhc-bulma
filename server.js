@@ -20,6 +20,46 @@ var urlencodedParser = bodyParser.urlencoded({extended:false});
 const mongoose = require('mongoose');
 var url = 'mongodb://localhost:27017';
 User = require('user-model.js');
+var fs = require('fs');
+var multer = require('multer');
+
+const multerConfig = {
+
+    storage: multer.diskStorage({
+        //Setup where the user's file will go
+        destination: function(req, file, next){
+            next(null, __dirname + '/public/uploads');
+        },
+
+        //Then give the file a unique name
+        filename: function(req, file, next){
+            next(null, Date.now() + file.orginalName);
+            // console.log(file);
+            // const ext = file.mimetype.split('/')[1];
+            // next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+        }
+    }),
+
+    //A means of ensuring only images are uploaded.
+    fileFilter: function(req, file, next){
+        if(!file){
+            next();
+        }
+        const image = file.mimetype.startsWith('image/');
+        if(image){
+            console.log('photo uploaded');
+            next(null, true);
+        }else{
+            console.log("file not supported");
+
+            //TODO:  A better message response to user on failure.
+            return next();
+        }
+    }
+};
+
+app.use(express.static('public'));
+
 // END things i've added
 
 var port = 3000;
@@ -140,9 +180,6 @@ app.post('/registerToDb', urlencodedParser, (req, res) => {
 });
 
 app.post('/login', urlencodedParser, (req, res) => {
-    // console.log(req);
-
-    //
     mongoose.connect(url, (err) => {
         if (err) throw err;
 
@@ -155,12 +192,42 @@ app.post('/login', urlencodedParser, (req, res) => {
             user.comparePassword(req.body.password, (err, isMatch) => {
 
                 if (err) throw err;
-                if (isMatch) {
-                    console.log("bazinga");
-                    res.render('index');
-                }
+                if (isMatch)
+                    res.render('upload');
+                else
+                    res.redirect('/fuckoff');
+
             });
         });
+    });
+});
+
+app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
+    //Here is where I could add functions to then get the url of the new photo
+    //And relocate that to a cloud storage solution with a callback containing its new url
+    //then ideally loading that into your database solution.   Use case - user uploading an avatar...
+    res.send('done did the thing buddy');
+});
+
+
+app.get("/imageForEachTest", (req, res) => {
+    console.log("we in here");
+    // var filenames = [];
+    fs.readdir(__dirname + '/public/uploads/', (err, files) => {
+        var htmlRetVal = "";
+        files.forEach(file => {
+
+            console.log("found image: " + file);
+            htmlRetVal += `<img src="${'http://localhost:3000/uploads/' + file}">`;
+        });
+        console.log(htmlRetVal);
+        res.send(htmlRetVal);
+        // res.send(`
+        // ${'http://localhost:3000' + filenames[0]}
+        //
+        // <img src="${'http://localhost:3000' + filenames[0]}">
+        // ${filenames}
+        // `);
     });
 });
 
