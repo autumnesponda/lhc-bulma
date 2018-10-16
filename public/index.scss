@@ -25,9 +25,12 @@ $navbar-item-hover-background-color: none;
 $navbar-tab-hover-border-bottom-color: $color-three;
 $button-focus-box-shadow-color: $primary-color;
 $link-focus-border: $primary-color;
+$card-footer-background-color: white;
+$card-footer-border-top: none;
 
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-carousel/dist/css/bulma-carousel.sass";
 
 @mixin transform($transforms) {
   -moz-transform: $transforms;
@@ -113,8 +116,6 @@ hr.dark {
   height: 1px;
   background: #4a4a4a;
   // background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
-  margin-block-start: 2em;
-  margin-block-end: 2em;
 }
 
 .about {
@@ -131,6 +132,16 @@ hr.dark {
 //   transition-timing-function: ease;
 //   transition-delay: 0s;
 // }
+
+.bm--card-equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bm--card-equal-height .card-footer {
+  margin-top: auto;
+}
 
 .center {
   display: flex;
@@ -171,9 +182,8 @@ hr.dark {
   font-size: 10em;
 }
 
-.button.is-rounded {
-  padding-left: 2em;
-  padding-right: 2em;
+.is-inline {
+  display: inline-block;
 }
 
 .fullheight-hero-img {
