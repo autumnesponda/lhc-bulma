@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    var carousels = bulmaCarousel.attach();
+
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function () {
 
