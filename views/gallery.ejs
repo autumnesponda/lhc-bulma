@@ -44,6 +44,13 @@
     <title>Little House Creative | Gallery</title>
 </head>
 
+<!-- script for _galleryItem -> image -> onError -->
+<script>
+    function removeElement(element) {
+        element.remove();
+    }
+</script>
+
 <body>
     <!-- Nav -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -72,142 +79,16 @@
     <!-- Portfolio Section -->
     <section class="section">
         <div class="container" id="portfolio">
-            <!-- First Row -->
+            <!--witchcraft to render gallery items from server-->
             <div class="columns is-variable is-1 is-multiline">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/cepeda_guest1.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/GuestRoom2.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/MasterBedroom3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
+            <% for (var i = 0; i < images.length; i++) { %>
+                <% if (i % 3 == 0 && i != 0) { %>
+                    </div>
+                    <div class="columns is-variable is-1 is-multiline has-small-gap">
+                <% } %>
+                <%- include('_galleryItem', {image: images[i]}); %>
+            <% } %>
             </div>
-            <!-- /First Row -->
-            <!-- Second Row -->
-            <div class="columns is-variable is-1 is-multiline has-small-gap">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/20171107_185606.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/Main wall 3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/ExposedInteriors5 (1).jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- /Second Row -->
-            <!-- Third Row -->
-            <div class="columns is-variable is-1 is-multiline has-small-gap">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/20171107_185606.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/Main wall 3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/ExposedInteriors5 (1).jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- /Third Row -->
-            <!-- Fourth Row -->
-            <div class="columns is-variable is-1 is-multiline has-small-gap">
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/20171107_185606.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/Main wall 3.jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-                <div class="column is-full-tablet is-one-third-desktop portfolio-img">
-                    <figure class="image is-3by2 has-zoom">
-                        <img src="./images/ExposedInteriors5 (1).jpg">
-                        <div class="overlay">
-                            <div class="overlay-text has-text-weight-bold has-letter-spacing is-uppercase is-size-4">
-                                Testing
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- /Fourth Row -->
         </div>
     </section>
     <!-- /Portfolio Section -->

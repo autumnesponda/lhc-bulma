@@ -99,8 +99,14 @@
                 <!--</button>-->
             <!--</form>-->
             <form action="/upload" enctype="multipart/form-data" method="POST" >
-                <input type="file" name="photo" />
+                <input type="file" accept="image/*" name="photo" required>
                 <input type="submit" value="Upload Photo"/>
+                <div class="field">
+                    <label class="label">Detail Text</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Detail Text" name="detailText" required></textarea>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

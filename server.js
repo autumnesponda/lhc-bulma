@@ -20,6 +20,7 @@ var urlencodedParser = bodyParser.urlencoded({extended:false});
 const mongoose = require('mongoose');
 var url = 'mongodb://localhost:27017';
 User = require('user-model.js');
+GalleryItem = require('gallery-item-model.js');
 var fs = require('fs');
 var multer = require('multer');
 
@@ -33,10 +34,9 @@ const multerConfig = {
 
         //Then give the file a unique name
         filename: function(req, file, next){
-            next(null, Date.now() + file.orginalName);
-            // console.log(file);
-            // const ext = file.mimetype.split('/')[1];
-            // next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+            console.log(file);
+            const ext = file.mimetype.split('/')[1];
+            next(null, file.fieldname + '-' + Date.now() + '.'+ext);
         }
     }),
 
@@ -79,7 +79,20 @@ app.get("/privacy-policy", function (req, res) {
 });
 
 app.get("/gallery", function (req, res) {
-  res.render("gallery");
+    mongoose.connect(url, (err) => {
+       if (err) throw err;
+
+       GalleryItem.find((err, result) => {
+           if (err) throw err;
+
+           var items = [];
+           result.forEach((item) => {
+              items.push(item);
+           });
+
+           res.render("gallery", {images: items});
+       });
+    });
 });
 
 app.get("/admin", function (req, res) {
@@ -195,7 +208,7 @@ app.post('/login', urlencodedParser, (req, res) => {
                 if (isMatch)
                     res.render('upload');
                 else
-                    res.redirect('/fuckoff');
+                    res.redirect('/loginFailed');
 
             });
         });
@@ -203,31 +216,21 @@ app.post('/login', urlencodedParser, (req, res) => {
 });
 
 app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
-    //Here is where I could add functions to then get the url of the new photo
-    //And relocate that to a cloud storage solution with a callback containing its new url
-    //then ideally loading that into your database solution.   Use case - user uploading an avatar...
-    res.send('done did the thing buddy');
-});
+    mongoose.connect(url, (err) => {
+        if (err) throw err;
 
-
-app.get("/imageForEachTest", (req, res) => {
-    console.log("we in here");
-    // var filenames = [];
-    fs.readdir(__dirname + '/public/uploads/', (err, files) => {
-        var htmlRetVal = "";
-        files.forEach(file => {
-
-            console.log("found image: " + file);
-            htmlRetVal += `<img src="${'http://localhost:3000/uploads/' + file}">`;
+        var galleryItem = GalleryItem({
+            imageName: req.file.filename,
+            imageUrl: '/uploads/' + req.file.filename,
+            imageDescription: req.body.detailText
         });
-        console.log(htmlRetVal);
-        res.send(htmlRetVal);
-        // res.send(`
-        // ${'http://localhost:3000' + filenames[0]}
-        //
-        // <img src="${'http://localhost:3000' + filenames[0]}">
-        // ${filenames}
-        // `);
+        console.log(galleryItem);
+        galleryItem.save((err) => {
+           if (err) throw err;
+
+        });
+
+        res.redirect("/Gallery");
     });
 });
 
