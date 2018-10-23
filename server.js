@@ -8,6 +8,10 @@ var express = require("express"),
 
 var config = require("./config.json");
 
+// Compression Setup - Remove if not needed
+const compression = require('compression');
+
+
 var app = express();
 const expressValidator = require("express-validator");
 
@@ -19,6 +23,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+app.use(compression());
 
 // Express Validator
 app.use(expressValidator());
