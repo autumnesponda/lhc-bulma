@@ -1,7 +1,6 @@
 // // Custom Variables
-$font-stack: "Raleway", sans-serif;
-
-$alt-font: "Muli", sans-serif;
+$font-stack: "Muli",
+sans-serif;
 
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
@@ -25,9 +24,27 @@ $button-focus-box-shadow-color: $primary-color;
 $link-focus-border: $primary-color;
 $card-footer-background-color: white;
 $card-footer-border-top: none;
-$gap: 128px;
+// Fluid container gap
+$gap: 32px;
 
 /* BULMA IMPORTS */
+// @import "../node_modules/bulma/sass/base/_all.sass";
+// @import "../node_modules/bulma/sass/components/card.sass";
+// @import "../node_modules/bulma/sass/components/navbar.sass";
+// @import "../node_modules/bulma/sass/components/panel.sass";
+// @import "../node_modules/bulma/sass/elements/button.sass";
+// @import "../node_modules/bulma/sass/elements/container.sass";
+// @import "../node_modules/bulma/sass/elements/content.sass";
+// @import "../node_modules/bulma/sass/elements/form.sass";
+// @import "../node_modules/bulma/sass/elements/icon.sass";
+// @import "../node_modules/bulma/sass/elements/image.sass";
+// @import "../node_modules/bulma/sass/elements/notification.sass";
+// @import "../node_modules/bulma/sass/elements/title.sass";
+// @import "../node_modules/bulma/sass/elements/other.sass";
+// @import "../node_modules/bulma/sass/grid/_all.sass";
+// @import "../node_modules/bulma/sass/layout/_all.sass";
+// @import "../node_modules/bulma/sass/utilities/_all.sass";
+
 @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulma-carousel/dist/css/bulma-carousel.sass";
 
@@ -91,7 +108,7 @@ $gap: 128px;
 
 /* MAIN CSS */
 body {
-  font-family: $alt-font;
+  font-family: $font-stack;
 }
 
 // To change the hamburger color on mobile
