@@ -11025,9 +11025,13 @@ p.about-text {
   margin-top: auto;
 }
 
+.bottom-disclaimer {
+  margin-top: 1em;
+}
+
 .grow {
-  -webkit-transition: all .25s ease-in-out;
-  transition: all .25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .grow:hover {
@@ -11086,8 +11090,8 @@ p.about-text {
 }
 
 .fullheight-hero-img {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(74, 74, 74, 0.5)), to(rgba(74, 74, 74, 0.5))), url(../images/fullheight_hero1a.jpg);
-  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)), url(../images/fullheight_hero1a.jpg);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(74, 74, 74, 0.5)), to(rgba(74, 74, 74, 0.5))), url(../images/fullheight_hero1a_compressed.jpg);
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)), url(../images/fullheight_hero1a_compressed.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

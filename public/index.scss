@@ -1,9 +1,7 @@
 // // Custom Variables
-$font-stack: "Raleway",
-sans-serif;
+$font-stack: "Raleway", sans-serif;
 
-$alt-font: "Muli",
-sans-serif;
+$alt-font: "Muli", sans-serif;
 
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
@@ -152,8 +150,12 @@ p.about-text {
   margin-top: auto;
 }
 
+.bottom-disclaimer {
+  margin-top: 1em;
+}
+
 .grow {
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .grow:hover {
@@ -209,7 +211,7 @@ p.about-text {
 
 .fullheight-hero-img {
   background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
-    url(../images/fullheight_hero1a.jpg);
+    url(../images/fullheight_hero1a_compressed.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
