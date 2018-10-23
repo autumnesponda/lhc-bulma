@@ -1,8 +1,8 @@
 // // Custom Variables
-$font-stack: 'Raleway',
+$font-stack: "Raleway",
 sans-serif;
 
-$alt-font: 'Muli',
+$alt-font: "Muli",
 sans-serif;
 
 // Original Colors - Non Google Color
@@ -27,6 +27,7 @@ $button-focus-box-shadow-color: $primary-color;
 $link-focus-border: $primary-color;
 $card-footer-background-color: white;
 $card-footer-border-top: none;
+$gap: 128px;
 
 /* BULMA IMPORTS */
 @import "../node_modules/bulma/bulma.sass";
@@ -108,18 +109,26 @@ a.navbar-burger {
 
 .arrow-down {
   @include animation(pulseUpDown 1.2s infinite ease-in-out normal);
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
+}
+
+.about-hero {
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
+    url(../images/Project-Drawing_hero.jpg);
 }
 
 hr.dark {
   border: 0;
   height: 1px;
-  background: #4a4a4a;
-  // background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
+  background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
 }
 
-.about {
-  background: $dark-color;
+p.about-text {
+  font-size: 18px;
+}
+
+.has-padding-top {
+  padding-top: 4.5em;
 }
 
 // Button hover effect
@@ -141,6 +150,18 @@ hr.dark {
 
 .bm--card-equal-height .card-footer {
   margin-top: auto;
+}
+
+.grow {
+  transition: all .25s ease-in-out;
+}
+
+.grow:hover {
+  @include transform(scale(1.1));
+}
+
+.services-title {
+  min-height: 3em;
 }
 
 .center {
@@ -196,11 +217,6 @@ hr.dark {
   // filter: blur(3px);
 }
 
-.main-hero {
-  background: linear-gradient(120deg, $primary-color, $white);
-  // background: $secondary-color;
-}
-
 .navbar-brand {
   letter-spacing: 0.25rem;
 }
@@ -252,8 +268,10 @@ hr.dark {
   }
 }
 
-
-
+.twitter-feed {
+  background-color: $dark-color;
+  clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
+}
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 // .has-zoom img {

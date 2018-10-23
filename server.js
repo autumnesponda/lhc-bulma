@@ -3,7 +3,8 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   request = require("request"),
   cookieParser = require("cookie-parser"),
-  session = require("express-session");
+  session = require("express-session"),
+  tweets = require("./tweets");
 
 var config = require("./config.json");
 
@@ -35,6 +36,7 @@ var port = 3000;
 
 // Routes
 app.get("/", function (req, res) {
+  tweets.getData();
   res.render("index");
 });
 
@@ -54,6 +56,10 @@ app.get("/gallery", function (req, res) {
 
 app.get("/admin", function (req, res) {
   res.render("admin");
+})
+
+app.get("/about", function (req, res) {
+  res.render("about");
 })
 // End Routes
 

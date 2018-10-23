@@ -8,6 +8,26 @@
     <meta name="description" content="Interior designer Nicole Maisonet-West uses inexpensive finds and develops them into one-of-a-kind, unique set pieces.  She transforms ordinary spaces into beautiful living areas">
     <meta name="keywords" content="interior design, interior designer, home, home design, crafts, custom, orlando design, orlando designer">
 
+    <!-- Load Twitter for Web Script -->
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/index.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -60,9 +80,10 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
+                <a href="/" class="navbar-item is-tab">Home</a>
                 <a href="/gallery" class="navbar-item is-tab">Gallery</a>
-                <a href="#" class="navbar-item is-tab">Services</a>
-                <a href="#" class="navbar-item is-tab">About</a>
+                <a href="#" class="navbar-item is-tab" id="services-link">Services</a>
+                <a href="/about" class="navbar-item is-tab">About</a>
                 <a href="/contact" class="navbar-item is-tab">Contact</a>
             </div>
         </div>
@@ -87,208 +108,123 @@
         </div>
     </section>
     <!-- /Hero -->
+
     <!-- Services Section -->
     <section class="section" id="services">
-        <div class="container">
+        <div class="container is-fluid">
             <h1 class="title is-size-2 has-text-centered" data-aos="fade-left">A Service for Everyone</h1>
-            <!-- <hr class="light"> -->
-            <!-- DELETE THIS CONTAINER FOR FULL WIDTH -->
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-half-tablet is-one-quarter-desktop">
-                        <div class="card bm--card-equal-height">
-                            <div class="card-content">
-                                <p class="title has-text-centered services-title">Design Consultations</p>
-                                <p class="subtitle is-spaced is-italic has-text-centered">$50/hour</p>
-                                <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                                <p class="has-text-weight-bold has-text-centered">Those who have an idea of what they
-                                    want
-                                    but just need help on how to start/finish it</p>
-                            </div>
-                            <footer class="card-footer">
-                                <p class="card-footer-item">
-                                    <a href="/contact" class="button is-medium is-dark is-fullwidth">
-                                        <span>Select</span>
-                                    </a>
-                                </p>
-                            </footer>
+            <div class="columns is-multiline" data-aos="fade-up">
+                <div class="column is-half-tablet is-one-fifth-desktop">
+                    <div class="card grow bm--card-equal-height">
+                        <div class="card-content">
+                            <p class="title is-spaced has-text-centered services-title">Design Consultations</p>
+                            <p class="subtitle is-italic has-text-centered">$50/hour</p>
+                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered">Those who have an idea of what they
+                                want
+                                but just need help on how to start/finish it</p>
                         </div>
-                    </div>
-                    <div class="column is-half-tablet is-one-quarter-desktop">
-                        <div class="card bm--card-equal-height">
-                            <div class="card-content">
-                                <p class="title has-text-centered services-title">Paint Color Consultation</p>
-                                <p class="subtitle is-spaced is-italic has-text-centered">$45</p>
-                                <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                                <p class="has-text-weight-bold has-text-centered">Those who are unsure of what colors
-                                    will go best with their room pieces.</p>
-                                <br>
-                                <div class="content">
-                                    <p class="is-italic has-text-centered">Includes two paint color schemes
-                                        (main color and two complementary colors)
-                                    </p>
-                                </div>
-
-                            </div>
-                            <footer class="card-footer">
-                                <p class="card-footer-item">
-                                    <a href="/contact" class="button is-medium is-dark is-fullwidth">
-                                        <span>Select</span>
-                                    </a>
-                                </p>
-                            </footer>
-                        </div>
-                    </div>
-                    <div class="column is-half-tablet is-one-quarter-desktop">
-                        <div class="card bm--card-equal-height">
-                            <div class="card-content">
-                                <p class="title has-text-centered services-title">Room Layout</p>
-                                <p class="subtitle is-spaced is-italic has-text-centered">$75</p>
-                                <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                                <p class="has-text-weight-bold has-text-centered">Those who need a floor plan layout
-                                    with furniture placement</p>
-                                <br>
-                                <p class="has-text-centered is-italic">Rearrangement only</p>
-                            </div>
-                            <footer class="card-footer">
-                                <p class="card-footer-item">
-                                    <a href="/contact" class="button is-medium is-dark is-fullwidth">
-                                        <span>Select</span>
-                                    </a>
-                                </p>
-                            </footer>
-                        </div>
-                    </div>
-                    <div class="column is-half-tablet is-one-quarter-desktop">
-                        <div class="card bm--card-equal-height">
-                            <div class="card-content">
-                                <p class="title has-text-centered services-title">Full Design Consultation</p>
-                                <p class="subtitle is-spaced is-italic has-text-centered">$150/hour</p>
-                                <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                                <p class="has-text-weight-bold has-text-centered">Those who need a full room makeover</p>
-                            </div>
-                            <footer class="card-footer">
-                                <p class="card-footer-item">
-                                    <a href="/contact" class="button is-medium is-dark is-fullwidth">
-                                        <span>Select</span>
-                                    </a>
-                                </p>
-                            </footer>
-                        </div>
-                        <div class="disclaimer">
-                            <p class="has-text-grey-light is-italic">Includes 2 revisions</p>
-                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="/contact" class="button is-medium is-dark is-fullwidth">
+                                    <span>Select</span>
+                                </a>
+                            </p>
+                        </footer>
                     </div>
                 </div>
+                <div class="column is-half-tablet is-one-fifth-desktop">
+                    <div class="card grow bm--card-equal-height">
+                        <div class="card-content">
+                            <p class="title is-spaced has-text-centered services-title">Paint Color Consultation</p>
+                            <p class="subtitle is-italic has-text-centered">$45</p>
+                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered">Those who are unsure of what colors
+                                will go best with their room pieces.</p>
+                            <p class="is-italic has-text-centered">Includes two paint color schemes
+                                (main color and two complementary colors)
+                            </p>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="/contact" class="button is-medium is-dark is-fullwidth">
+                                    <span>Select</span>
+                                </a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column is-half-tablet is-one-fifth-desktop">
+                    <div class="card grow bm--card-equal-height">
+                        <div class="card-content">
+                            <p class="title is-spaced has-text-centered services-title">Full Design Consultation</p>
+                            <p class="subtitle is-italic has-text-centered">$150/hour</p>
+                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered">Those who need a full room makeover</p>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="/contact&subject=full-design" class="button is-medium is-dark is-fullwidth">
+                                    <span>Select</span>
+                                </a>
+                            </p>
+                        </footer>
+                    </div>
+                    <div class="disclaimer has-text-centered">
+                        <p class="has-text-grey-light is-italic">Includes 2 revisions</p>
+                    </div>
+                </div>
+                <div class="column is-half-tablet is-one-fifth-desktop">
+                    <div class="card grow bm--card-equal-height">
+                        <div class="card-content">
+                            <p class="title is-spaced has-text-centered services-title">Room Layout / Rearrangement</p>
+                            <p class="subtitle is-italic has-text-centered">$75</p>
+                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered">Those who need a floor plan layout
+                                with furniture placement or a rearrangement of existing furniture</p>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="/contact" class="button is-medium is-dark is-fullwidth">
+                                    <span>Select</span>
+                                </a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column is-half-tablet is-one-fifth-desktop">
+                    <div class="card grow bm--card-equal-height">
+                        <div class="card-content">
+                            <p class="title is-spaced has-text-centered services-title">Full Design Consultation</p>
+                            <p class="subtitle is-italic has-text-centered">$150/hour</p>
+                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered">Those who need a full room makeover</p>
+                        </div>
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="/contact&subject=full-design" class="button is-medium is-dark is-fullwidth">
+                                    <span>Select</span>
+                                </a>
+                            </p>
+                        </footer>
+                    </div>
+                    <div class="disclaimer has-text-centered">
+                        <p class="has-text-grey-light is-italic">Includes 2 revisions</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
     <!-- /Services Section -->
-    <!-- Example Gallery -->
-    <section class="section">
-        <div class="container">
-            <h1 class="title is-size-2 has-text-centered">Gallery</h1>
-            <div class="continer">
-                <div class="columns">
-                    <div class="column">
-                        <div class='carousel carousel-animated carousel-animate-slide'>
-                            <div class='carousel-container'>
-                                <div class='carousel-item has-background is-active'>
-                                    <img class="is-background" src="https://wikiki.github.io/images/merry-christmas.jpg"
-                                        alt="" width="640" height="310" />
-                                    <div class="title">Merry Christmas</div>
-                                </div>
-                                <div class='carousel-item has-background'>
-                                    <img class="is-background" src="https://wikiki.github.io/images/singer.jpg" alt=""
-                                        width="640" height="310" />
-                                    <div class="title">Original Gift: Offer a song with <a href="https://lasongbox.com"
-                                            target="_blank">La Song Box</a></div>
-                                </div>
-                                <div class='carousel-item has-background'>
-                                    <img class="is-background" src="https://wikiki.github.io/images/sushi.jpg" alt=""
-                                        width="640" height="310" />
-                                    <div class="title">Sushi time</div>
-                                </div>
-                                <div class='carousel-item has-background'>
-                                    <img class="is-background" src="https://wikiki.github.io/images/life.jpg" alt=""
-                                        width="640" height="310" />
-                                    <div class="title">Life</div>
-                                </div>
-                            </div>
-                            <div class="carousel-navigation is-overlay">
-                                <div class="carousel-nav-left">
-                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                </div>
-                                <div class="carousel-nav-right">
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content">
-                            <p>I will help you design the best </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Twitter Feed -->
+    <section class="section twitter-feed">
+        <div class="container is-fluid">
+            <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-left">See What People are
+                Saying!</h1>
+            <twitter-wjs></twitter-wjs>
     </section>
-    <!-- /Example Gallery -->
-    <!-- About Section -->
-    <section class="section about has-text-white">
-        <div class="container" id="about">
-            <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-up">About</h1>
-            <!-- <hr class="light"> -->
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <div class="content">
-                            <h3 class="title is-uppercase has-text-centered has-text-white">Simple. Inexpensive.
-                                Sanctuary.</h3>
-                            <p>
-                                I like to expose the beauty of an item that seems to have lost its way. Show the charm.
-                                Expand
-                                the
-                                walls of a home of any size by adding the style that most represents the environment
-                                you want
-                                to
-                                surround yourself in. Test your boundaries, expand your mind. Create and aesthetic.
-                                Invite me
-                                in to
-                                your little house and watch how big it grows when all your ideas come to fruition.
-                                You know what you like but don’t know where to begin. You enjoy the projects, but don’t
-                                know
-                                how to
-                                create your vision on a budget. That’s where I come in. I understand we all want the
-                                perfect
-                                home,
-                                a sanctuary, but most of us don’t have the money. But what if I could show you how to
-                                come real
-                                close to magazine quality with Swedish materials?
-                            </p>
-                            <p>
-                                I went back to get my degree in Interior Design from the School of Visual Arts after I
-                                already
-                                had
-                                a degree because I knew it was my purpose. I had grand visions of reinvigorating life
-                                into
-                                people’s
-                                home and quickly realized, after starting my own family, that sometimes, I’ll just have
-                                to DIY
-                                it
-                                or really just be okay with loving those plain eggshell colored walls that came with
-                                the house.
-                                Let
-                                me
-                                help you learn how to stop being okay with it.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- /Twitter Feed -->
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -322,9 +258,11 @@
     </footer>
     <!-- /Footer -->
     <!-- JS Files -->
+    <script async src="./js/widgets.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/on_ready.js"></script>
+    <script src="./js/attach-carousel.js"></script>
     <script src="./js/scroll.js"></script>
     <script src="./js/bulma-carousel.min.js"></script>
     <!-- /JS Files -->
