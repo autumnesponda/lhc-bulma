@@ -15,17 +15,21 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// START things i've added hmmm
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 const mongoose = require('mongoose');
+
+// TODO: configure this when uploaded to the server
 var url = 'mongodb://localhost:27017';
-User = require('user-model.js');
-GalleryItem = require('gallery-item-model.js');
+
+// DB schemas
+User = require('./schemas/user-model');
+GalleryItem = require('./schemas/gallery-item-model');
+
+// fs and multer for saving images to database
 var fs = require('fs');
 var multer = require('multer');
 
 const multerConfig = {
-
     storage: multer.diskStorage({
         //Setup where the user's file will go
         destination: function(req, file, next){
@@ -34,7 +38,7 @@ const multerConfig = {
 
         //Then give the file a unique name
         filename: function(req, file, next){
-            console.log(file);
+            // console.log(file);
             const ext = file.mimetype.split('/')[1];
             next(null, file.fieldname + '-' + Date.now() + '.'+ext);
         }
@@ -47,20 +51,18 @@ const multerConfig = {
         }
         const image = file.mimetype.startsWith('image/');
         if(image){
-            console.log('photo uploaded');
+            // console.log('photo uploaded');
             next(null, true);
         }else{
-            console.log("file not supported");
-
-            //TODO:  A better message response to user on failure.
+            // console.log("file not supported");
             return next();
         }
     }
 };
 
+// allows for public access to images stored in ~/public/ folder
 app.use(express.static('public'));
 
-// END things i've added
 
 var port = 3000;
 
@@ -85,12 +87,13 @@ app.get("/gallery", function (req, res) {
        GalleryItem.find((err, result) => {
            if (err) throw err;
 
+           // we're going to grab all the gallery items from the db
+           // so we can pass them down to the response to render it out
            var items = [];
            result.forEach((item) => {
-              items.push(item);
+               items.push(item);
            });
-
-           res.render("gallery", {images: items});
+           res.render("gallery", {galleryItems: items});
        });
     });
 });
@@ -199,14 +202,17 @@ app.post('/login', urlencodedParser, (req, res) => {
         User.findOne({username: req.body.email}, (err, user) => {
             if (err) throw err;
 
+            // TODO: username not found page
             if (!user)
                 return;
 
             user.comparePassword(req.body.password, (err, isMatch) => {
-
                 if (err) throw err;
+
                 if (isMatch)
                     res.render('upload');
+
+                // TODO: incorrect password page
                 else
                     res.redirect('/loginFailed');
 
@@ -215,22 +221,31 @@ app.post('/login', urlencodedParser, (req, res) => {
     });
 });
 
-app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
-    mongoose.connect(url, (err) => {
-        if (err) throw err;
+//
+app.post('/upload', multer(multerConfig).fields([
+                        { name: 'galleryPhoto', maxCount: 1 },
+                        { name: 'childPhotos', maxCount: 20 }
+                    ]), function(req, res){
 
-        var galleryItem = GalleryItem({
-            imageName: req.file.filename,
-            imageUrl: '/uploads/' + req.file.filename,
-            imageDescription: req.body.detailText
+    var file = req.files['galleryPhoto'][0];
+    var galleryItem = GalleryItem({
+        mainImageName: file.filename,
+        mainImageUrl: '/uploads/' + file.filename,
+        hoverText: req.body.hoverText,
+        fullDescription: req.body.fullDescription,
+    });
+    var files = req.files['childPhotos'];
+    for (var i = 0; i < files.length; i++) {
+        galleryItem.childrenImages.push({
+            name: files[i].filename,
+            url: '/uploads/' + files[i].filename,
         });
-        console.log(galleryItem);
-        galleryItem.save((err) => {
-           if (err) throw err;
+    }
 
-        });
+    galleryItem.save((err) => {
+       if (err) throw err;
 
-        res.redirect("/Gallery");
+       console.log("gallery item uploaded successfully");
     });
 });
 

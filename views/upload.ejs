@@ -89,23 +89,32 @@
     <div class="container">
         <h1 class="title has-text-centered has-text-weight-light">Let's try and upload a thing</h1>
         <div class="content has-text-centered">
-            <!--<form>-->
-                <!--<input type="file"-->
-                       <!--accept="image/*"-->
-                <!--&gt;-->
-                <!--<button class="button is-rounded"-->
-                        <!--onclick=submitFileUploadClicked(event)>-->
-                    <!--submit-->
-                <!--</button>-->
-            <!--</form>-->
             <form action="/upload" enctype="multipart/form-data" method="POST" >
-                <input type="file" accept="image/*" name="photo" required>
-                <input type="submit" value="Upload Photo"/>
+                <div class="field">
+                    <label class="label">Pick the main gallery photo</label>
+                    <div class="control">
+                        <input type="file" accept="image/*" name="galleryPhoto" required>
+                    </div>
+                </div>
                 <div class="field">
                     <label class="label">Detail Text</label>
                     <div class="control">
-                        <textarea class="textarea" placeholder="Detail Text" name="detailText" required></textarea>
+                        <input class="input" type="text" placeholder="Hover Description" name="hoverText" required>
                     </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Description on click" name="fullDescription" required></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Pick the gallery photos</label>
+                    <div class="control">
+                        <input type="file" multiple="" accept="image/*" name="childPhotos" required>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Submit new gallery item"/>
                 </div>
             </form>
         </div>

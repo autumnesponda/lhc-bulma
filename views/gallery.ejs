@@ -81,12 +81,12 @@
         <div class="container" id="portfolio">
             <!--witchcraft to render gallery items from server-->
             <div class="columns is-variable is-1 is-multiline">
-            <% for (var i = 0; i < images.length; i++) { %>
+            <% for (var i = 0; i < galleryItems.length; i++) { %>
                 <% if (i % 3 == 0 && i != 0) { %>
                     </div>
                     <div class="columns is-variable is-1 is-multiline has-small-gap">
                 <% } %>
-                <%- include('_galleryItem', {image: images[i]}); %>
+                <%- include('_galleryItem', {galleryItem: galleryItems[i]}); %>
             <% } %>
             </div>
         </div>
