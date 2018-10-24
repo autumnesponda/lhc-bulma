@@ -10,6 +10,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/index.css">
+    <!-- <link rel="stylesheet" href="/index.min.css"> -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- <link rel="stylesheet" href="/debug.css"> -->
@@ -26,7 +27,7 @@
     <!-- /Favicon Stuff -->
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600" rel="stylesheet">
     <!-- /Fonts -->
 
     <!-- FontAwesome -->
@@ -74,15 +75,15 @@
     <section class="hero animated fadeIn slow is-fullheight fullheight-hero-img">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title has-text-white is-extra-large is-size-1-mobile has-text-weight-bold">Little House
+                <h1 class="title has-text-white is-extra-large is-size-1-mobile has-text-weight-bold">Little
+                    House
                     Creative</h1>
                 <hr>
-                <h2 class="subtitle hero-subtitle has-text-centered has-text-white is-uppercase is-size-4-desktop is-size-5-tablet is-size-4-mobile">
+                <h2 class="subtitle hero-subtitle has-text-centered has-text-white is-uppercase is-size-4-desktop is-size-4-tablet is-size-4-mobile">
                     Interior design by Nicole Maisonet-West
                 </h2>
             </div>
         </div>
-        <script src="../public/js/scroll.js"></script>
         <div class="container has-text-centered">
             <span id="scroll-button" class="is-hidden-mobile"><i class="fas fa-chevron-down fa-3x has-text-white arrow-down"></i></span>
         </div>
@@ -93,14 +94,98 @@
     <section class="section" id="services">
         <div class="container is-fluid">
             <h1 class="title is-size-2 has-text-centered" data-aos="fade-left">A Service for Everyone</h1>
+            <div class="pricing-table" data-aos="fade-up">
+                <div class="pricing-plan grow">
+                    <div class="plan-header">Design Consultations</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>50</span>/hour</div>
+                    <div class="plan-items">
+                        <div class="plan-item">20GB Storage</div>
+                        <div class="plan-item">100 Domains</div>
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                    </div>
+                    <div class="plan-footer">
+                        <a class="button is-fullwidth is-dark is-medium" href="/contact">Select Design</a>
+                    </div>
+                </div>
+
+                <div class="pricing-plan grow">
+                    <div class="plan-header">Paint Color Consultation</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>45</span></div>
+                    <div class="plan-items">
+                        <div class="plan-item">2 paint color schemes</div>
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                    </div>
+                    <div class="plan-footer">
+                        <a class="button is-fullwidth is-dark is-medium" href="/contact">Select Paint</a>
+                    </div>
+                </div>
+
+                <div class="pricing-plan grow">
+                    <div class="plan-header">Room Layout/Rearrangement</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>75</span></div>
+                    <div class="plan-items">
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                        <div class="plan-item">-</div>
+                    </div>
+                    <div class="plan-footer">
+                        <a class="button is-fullwidth is-dark is-medium" href="/contact">Select Layout</a>
+                    </div>
+                </div>
+
+                <div class="pricing-plan grow">
+                    <div class="plan-header">Full Design Package</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>150</span>/hour</div>
+                    <div class="plan-items">
+                        <div class="plan-item">Initial consultation</div>
+                        <div class="plan-item">Concept Board</div>
+                        <div class="plan-item">Floor Plan Layout</div>
+                        <div class="plan-item">Furniture Selecton</div>
+                        <div class="plan-item">Product Source List & Purchase Information</div>
+                        <div class="plan-item">Paint Color Selection</div>
+                        <div class="plan-item">Lighting & Room Decor Selection</div>
+                    </div>
+                    <div class="plan-footer">
+                        <a class="button is-fullwidth is-dark is-medium" href="/contact">Select Full Design</a>
+                    </div>
+                </div>
+                <div class="pricing-plan grow">
+                    <div class="plan-header">Design Build Package</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>500</span>
+                        and up</div>
+                    <div class="plan-items">
+                        <div class="plan-item">Full Design</div>
+                        <div class="plan-item">Painting Work</div>
+                        <div class="plan-item">Assembling Furniture & Placement</div>
+                        <div class="plan-item">Curtain Installation</div>
+                        <div class="plan-item">Custom Piece Installation</div>
+                    </div>
+                    <div class="plan-footer">
+                        <a class="button is-fullwidth is-medium is-dark" href="/contact">Select Design</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <!-- <section class="section">
+        <div class="container is-fluid">
+            <h1 class="title is-size-2 has-text-centered" data-aos="fade-left">A Service for Everyone</h1>
             <div class="columns is-multiline" data-aos="fade-up">
                 <div class="column is-half-tablet is-one-fifth-desktop">
                     <div class="card grow bm--card-equal-height">
                         <div class="card-content">
-                            <p class="title is-spaced has-text-centered services-title">Design Consultations</p>
-                            <p class="subtitle is-italic has-text-centered">$50/hour</p>
-                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                            <p class="has-text-weight-bold has-text-centered">Those who have an idea of what they
+                            <p class="title is-spaced has-text-centered services-title">Design
+                                Consultations</p>
+                            <p class="subtitle is-italic has-text-centered price is-4">$50/hour</p>
+                            <p class="subtitle is-uppercase has-text-centered is-6 is-marginless">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered description">Those who have an
+                                idea of
+                                what they
                                 want
                                 but just need help on how to start/finish it</p>
                         </div>
@@ -116,10 +201,13 @@
                 <div class="column is-half-tablet is-one-fifth-desktop">
                     <div class="card grow bm--card-equal-height">
                         <div class="card-content">
-                            <p class="title is-spaced has-text-centered services-title">Paint Color Consultation</p>
-                            <p class="subtitle is-italic has-text-centered">$45</p>
-                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                            <p class="has-text-weight-bold has-text-centered">Those who are unsure of what colors
+                            <p class="title is-spaced has-text-centered services-title">Paint Color
+                                Consultation</p>
+                            <p class="subtitle is-italic has-text-centered price is-4">$45</p>
+                            <p class="subtitle is-uppercase has-text-centered is-6 is-marginless">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered description">Those who are unsure
+                                of what
+                                colors
                                 will go best with their room pieces.</p>
                             <p class="is-italic has-text-centered">Includes two paint color schemes
                                 (main color and two complementary colors)
@@ -137,10 +225,19 @@
                 <div class="column is-half-tablet is-one-fifth-desktop">
                     <div class="card grow bm--card-equal-height">
                         <div class="card-content">
-                            <p class="title is-spaced has-text-centered services-title">Full Design Consultation</p>
-                            <p class="subtitle is-italic has-text-centered">$150/hour</p>
-                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                            <p class="has-text-weight-bold has-text-centered">Those who need a full room makeover</p>
+                            <p class="title is-spaced has-text-centered services-title">Full Design
+                                Package</p>
+                            <p class="subtitle is-italic has-text-centered price is-4">$150/hour</p>
+                            <p class="subtitle is-uppercase has-text-centered is-6 is-marginless">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered description">Those who need a full
+                                room
+                                makeover</p>
+                            <p class="is-italic has-text-centered">Includes initial consultation, concept
+                                board, floor
+                                plan layout, furniture selection, product source list and purchase information,
+                                paint
+                                color selection, and lighting and room decor selection
+                            </p>
                         </div>
                         <footer class="card-footer">
                             <p class="card-footer-item">
@@ -157,10 +254,13 @@
                 <div class="column is-half-tablet is-one-fifth-desktop">
                     <div class="card grow bm--card-equal-height">
                         <div class="card-content">
-                            <p class="title is-spaced has-text-centered services-title">Room Layout / Rearrangement</p>
-                            <p class="subtitle is-italic has-text-centered">$75</p>
-                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                            <p class="has-text-weight-bold has-text-centered">Those who need a floor plan layout
+                            <p class="title is-spaced has-text-centered services-title">Room Layout /
+                                Rearrangement</p>
+                            <p class="subtitle is-italic has-text-centered price is-4">$75</p>
+                            <p class="subtitle is-uppercase has-text-centered is-6 is-marginless">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered description">Those who need a
+                                floor plan
+                                layout
                                 with furniture placement or a rearrangement of existing furniture</p>
                         </div>
                         <footer class="card-footer">
@@ -175,11 +275,15 @@
                 <div class="column is-half-tablet is-one-fifth-desktop">
                     <div class="card grow bm--card-equal-height">
                         <div class="card-content">
-                            <p class="title is-spaced has-text-centered services-title">Design Build Package</p>
-                            <p class="subtitle is-italic has-text-centered">Starting at $500</p>
-                            <p class="subtitle is-uppercase has-text-centered is-small">Best For</p>
-                            <p class="has-text-weight-bold has-text-centered">Those who need a full room makeover</p>
-                            <p class="is-italic has-text-centered">Includes full design, painting work, assembling
+                            <p class="title is-spaced has-text-centered services-title">Design Build
+                                Package</p>
+                            <p class="subtitle is-italic has-text-centered price is-4">Starting at $500</p>
+                            <p class="subtitle is-uppercase has-text-centered is-6 is-marginless">Best For</p>
+                            <p class="has-text-weight-bold has-text-centered description">Those who need a full
+                                room
+                                makeover</p>
+                            <p class="is-italic has-text-centered">Includes full design, painting work,
+                                assembling
                                 furniture and placement, installation of curtains and/or custom pieces
                             </p>
                         </div>
@@ -202,15 +306,16 @@
                     <strong>2-3 weeks</strong> for design delivery</p>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- /Services Section -->
-    <!-- Twitter Feed -->
-    <section class="section twitter-feed">
+    <!-- Instagram Feed -->
+    <section class="section instagram-feed">
         <div class="container is-fluid">
-            <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-left">See What People are
-                Saying!</h1>
+            <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-left">See My Work!</h1>
+            <div class="instafeed"></div>
+        </div>
     </section>
-    <!-- /Twitter Feed -->
+    <!-- /Instagram Feed -->
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -244,13 +349,11 @@
     </footer>
     <!-- /Footer -->
     <!-- JS Files -->
-    <!-- <script async src="./js/widgets.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/on_ready.js"></script>
-    <script src="./js/attach-carousel.js"></script>
     <script src="./js/scroll.js"></script>
-    <script src="./js/bulma-carousel.min.js"></script>
+    <script src="./js/instafeed.js"></script>
     <!-- /JS Files -->
 
     <!-- Load AOS Script -->
