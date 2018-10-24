@@ -53,8 +53,8 @@ app.get("/privacy-policy", function (req, res) {
   res.render("privacy-policy");
 });
 
-app.get("/gallery", function (req, res) {
-  res.render("gallery");
+app.get("/portfolio", function (req, res) {
+  res.render("portfolio");
 });
 
 app.get("/admin", function (req, res) {
