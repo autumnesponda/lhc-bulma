@@ -27,26 +27,25 @@ $card-footer-border-top: none;
 // Fluid container gap
 $gap: 32px;
 
-/* BULMA IMPORTS */
-// @import "../node_modules/bulma/sass/base/_all.sass";
-// @import "../node_modules/bulma/sass/components/card.sass";
-// @import "../node_modules/bulma/sass/components/navbar.sass";
-// @import "../node_modules/bulma/sass/components/panel.sass";
-// @import "../node_modules/bulma/sass/elements/button.sass";
-// @import "../node_modules/bulma/sass/elements/container.sass";
-// @import "../node_modules/bulma/sass/elements/content.sass";
-// @import "../node_modules/bulma/sass/elements/form.sass";
-// @import "../node_modules/bulma/sass/elements/icon.sass";
-// @import "../node_modules/bulma/sass/elements/image.sass";
-// @import "../node_modules/bulma/sass/elements/notification.sass";
-// @import "../node_modules/bulma/sass/elements/title.sass";
-// @import "../node_modules/bulma/sass/elements/other.sass";
-// @import "../node_modules/bulma/sass/grid/_all.sass";
-// @import "../node_modules/bulma/sass/layout/_all.sass";
-// @import "../node_modules/bulma/sass/utilities/_all.sass";
+// Bulma Imports
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+@import "../node_modules/bulma/sass/layout/_all.sass";
+@import "../node_modules/bulma/sass/elements/other.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/panel.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/content.sass";
+@import "../node_modules/bulma/sass/elements/form.sass";
+@import "../node_modules/bulma/sass/elements/icon.sass";
+@import "../node_modules/bulma/sass/elements/image.sass";
+@import "../node_modules/bulma/sass/elements/notification.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
 
-@import "../node_modules/bulma/bulma.sass";
-@import "../node_modules/bulma-carousel/dist/css/bulma-carousel.sass";
+// External Bulma Imports
+@import "../node_modules/bulma-pricingtable/dist/css/bulma-pricingtable.sass";
 
 @mixin transform($transforms) {
   -moz-transform: $transforms;
@@ -142,10 +141,6 @@ p.about-text {
   font-size: 18px;
 }
 
-.has-padding-top {
-  padding-top: 4.5em;
-}
-
 // Button hover effect
 // Delete if unwanted
 // a.button:hover {
@@ -157,16 +152,6 @@ p.about-text {
 //   transition-delay: 0s;
 // }
 
-.bm--card-equal-height {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.bm--card-equal-height .card-footer {
-  margin-top: auto;
-}
-
 .bottom-disclaimer {
   margin-top: 1em;
 }
@@ -176,11 +161,7 @@ p.about-text {
 }
 
 .grow:hover {
-  @include transform(scale(1.1));
-}
-
-.services-title {
-  min-height: 3em;
+  @include transform(scale(1.05));
 }
 
 .center {
@@ -203,6 +184,10 @@ p.about-text {
   letter-spacing: 0.15em;
 }
 
+.has-margin-top {
+  margin-top: 2em;
+}
+
 // Apply to hero-body class
 // Use 57 for a darker grey
 .hero-image {
@@ -210,16 +195,8 @@ p.about-text {
     url(../images/ExposedInteriors4_Hero.jpg);
 }
 
-.is-large {
-  font-size: 4em;
-}
-
 .is-extra-large {
   font-size: 5em;
-}
-
-.is-huge {
-  font-size: 10em;
 }
 
 .is-inline {
@@ -287,7 +264,7 @@ p.about-text {
   }
 }
 
-.twitter-feed {
+.instagram-feed {
   background-color: $dark-color;
   clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
 }
