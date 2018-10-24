@@ -21,19 +21,27 @@
     "body-parser": "^1.18.3",
     "bulma": "^0.7.1",
     "bulma-carousel": "^3.0.0",
+    "bulma-pricingtable": "^0.2.0",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-purgecss": "^1.1.1",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1",
     "node-fetch": "^2.2.0",
     "nodemailer": "^4.6.8",
     "path": "^0.12.7",
     "request": "^2.88.0",
+    "twit": "^2.2.11",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0",
     "purgecss": "^1.1.0"
   },
   "engines": {
