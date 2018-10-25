@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-fixed-navbar-top">
 
 <head>
     <meta charset="UTF-8">
@@ -49,7 +49,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                Little House Creative
+                <img src="./images/navbar-brand-logo-house_spacing.png" width="300" height="100">
             </a>
             <!-- Burger Menu -->
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -75,7 +75,7 @@
     <section class="hero animated fadeIn slow is-fullheight fullheight-hero-img">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <img src="./images/OriginalEverSoSlightlyOffCenterButBIGGERandWhite.png" alt="LHC logo" width="1000px">
+                <img src="./images/hero-logo.png" alt="LHC logo" width="1000px">
 
                 <h1 class="title has-text-white is-hidden is-size-1-mobile has-text-weight-bold">Little House
                     Creative</h1>
@@ -97,8 +97,8 @@
             <h1 class="title is-size-2 has-text-centered" data-aos="fade-left">A Service for Everyone</h1>
             <div class="pricing-table" data-aos="fade-up" data-aos-duration="1200">
                 <div class="pricing-plan grow">
-                    <div class="plan-header">Paint Color Consultation</div>
-                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>45</span></div>
+                    <div class="plan-header">Consultations</div>
+                    <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>50</span></div>
                     <div class="plan-items">
                         <div class="plan-item">2 Paint Color Schemes (main color and two complementary)</div>
                         <div class="plan-item">-</div>
@@ -109,11 +109,12 @@
                         <div class="plan-item">-</div>
                     </div>
                     <div class="plan-footer">
-                        <a class="button is-fullwidth is-dark is-medium" href="/contact">Select Paint</a>
+                        <a class="button is-fullwidth is-dark is-medium" href="/contact?subject=consultations">Select
+                            Consultations</a>
                     </div>
                 </div>
 
-                <div class="pricing-plan grow">
+                <!-- <div class="pricing-plan grow">
                     <div class="plan-header">Design Consultations</div>
                     <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>50</span>/hour</div>
                     <div class="plan-items">
@@ -128,7 +129,7 @@
                     <div class="plan-footer">
                         <a class="button is-fullwidth is-dark is-medium" href="/contact?subject=design">Select Design</a>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="pricing-plan grow">
                     <div class="plan-header">Room Layout/Rearrangement</div>
@@ -329,7 +330,6 @@
     <section class="section instagram-feed">
         <div class="container is-fluid">
             <h1 class="title is-size-2 has-text-centered has-text-white" data-aos="fade-left">See My Work!</h1>
-            <div class="instafeed"></div>
         </div>
     </section>
     <!-- /Instagram Feed -->
@@ -353,7 +353,10 @@
         <div class="content has-text-centered">
             <p>
                 <strong>Little House Creative </strong>&COPY;<span id="year">
-                    <script src="./js/year.js"></script>
+                    <script>
+                        var d = new Date();
+                        document.getElementById("year").innerHTML = d.getFullYear();
+                    </script>
                 </span>
             </p>
         </div>
@@ -370,7 +373,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./js/on_ready.js"></script>
     <script src="./js/scroll.js"></script>
-    <script src="./js/instafeed.js"></script>
     <!-- /JS Files -->
 
     <!-- Load AOS Script -->
