@@ -204,6 +204,21 @@ p.about-text {
     url(../images/ExposedInteriors4_Hero.jpg);
 }
 
+.hero-container {
+  border: 3px solid white;
+  padding: 1em;
+  background: inherit;
+  background-color: rgba(76, 76, 76, 0.25);
+  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.05);
+}
+
+hr {
+  text-align: center;
+  width: 80%;
+  max-width: 100%;
+  margin: 24px auto;
+}
+
 .is-extra-large {
   font-size: 5em;
 }
