@@ -73,7 +73,7 @@
     <section class="hero animated fadeIn is-medium">
         <div class="hero-body about-hero">
             <div class="container">
-                <h1 class="title has-text-centered is-uppercase is-size-1 has-text-white">
+                <h1 class="title has-text-centered is-uppercase is-size-1 is-size-2-mobile has-text-white">
                     Simple. Inexpensive.
                     Sanctuary.
                 </h1>
@@ -86,12 +86,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column center is-narrow">
-                    <figure class="image">
+                    <figure class="image" data-aos="fade-right">
                         <img src="./images/bio_pic4.jpg" alt="Nicole Maisonet-West">
                     </figure>
                 </div>
                 <div class="column">
-                    <div class="content">
+                    <div class="content" data-aos="fade-left">
                         <p class="about-text has-margin-top">
                             I like to expose the beauty of an item that seems to have lost its way. Show the charm.
                             Expand
@@ -154,7 +154,10 @@
         <div class="content has-text-centered">
             <p>
                 <strong>Little House Creative </strong>&COPY;<span id="year">
-                    <script src="./js/year.js"></script>
+                    <script>
+                        var d = new Date();
+                        document.getElementById("year").innerHTML = d.getFullYear();
+                    </script>
                 </span>
             </p>
         </div>
