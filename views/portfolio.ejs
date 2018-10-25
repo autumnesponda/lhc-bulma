@@ -10,8 +10,8 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/index.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link async href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link async rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <!-- <link rel="stylesheet" href="/debug.css"> -->
     <!-- /Stylesheets -->
 
@@ -46,8 +46,9 @@
     <!-- Nav -->
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item has-no-hover" href="/">
-                Little House Creative
+            <a class="navbar-item" href="/">
+                <img src="./images/navbar-brand-house1.png" width="70">
+                <span class="nav-text">Little House Creative</span>
             </a>
             <!-- Burger Menu -->
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -62,7 +63,6 @@
                 <a href="/" class="navbar-item is-tab">Home</a>
                 <a href="/portfolio" class="navbar-item is-tab">Portfolio</a>
                 <a href="#" class="navbar-item is-tab">Services</a>
-                <a href="/about" class="navbar-item is-tab">About</a>
                 <a href="/contact" class="navbar-item is-tab">Contact</a>
             </div>
         </div>
@@ -211,7 +211,7 @@
     </section>
     <!-- /Portfolio Section -->
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer animated fadeIn">
         <div class="container">
             <div class="columns">
                 <div class="column">
@@ -222,7 +222,6 @@
                         <a href="https://twitter.com/Nicole_LHC" class="navbar-item"><i class="fab fa-twitter fa-2x"></i></a>
                         <a href="https://www.pinterest.com/littlehousecreative/" class="navbar-item"><i class="fab fa-pinterest-p fa-2x"></i></a>
                         <a href="https://www.instagram.com/littlehousecreative/" class="navbar-item"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="mailto:nicole@littlehousecreative.com" class="navbar-item"><i class="far fa-envelope fa-2x"></i></a>
                     </div>
                 </div>
             </div>
@@ -237,10 +236,42 @@
                 </span>
             </p>
         </div>
+        <div class="columns is-multiline has-text-centered">
+            <div class="column is-full is-paddingless">
+                <div class="center">
+                    <span class="icon">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                    <p class="is-size-6 is-hidden-touch">407-796-1863</p>
+                    <div></div>
+                    <a href="tel:407-796-1863" class="is-hidden-widescreen is-hidden-tablet">407-796-1863</a>
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-centered is-multiline">
+            <div class="column is-full is-paddingless">
+                <div class="center">
+                    <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <a href="mailto:nicole@littlehousecreative.com" class="email-link">nicole@littlehousecreative.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-centered is-multiline">
+            <div class="column is-full is-paddingless">
+                <div class="center">
+                    <span class="icon">
+                        <i class="fas fa-location-arrow"></i>
+                    </span>
+                    <p class="is-size-6">Orlando, FL</p>
+                </div>
+            </div>
+        </div>
         <div class="columns">
-            <div class="column has-text-centered center">
-                <a href="#" class="navbar-item has-text-weight-semibold">Sitemap</a>
-                <a href="/privacy-policy" class="navbar-item has-text-weight-semibold">Privacy Policy</a>
+            <div class="column has-text-centered center no-bottom-padding">
+                <a href="#" class="navbar-item has-text-weight-bold">Sitemap</a>
+                <a href="/privacy-policy" class="navbar-item has-text-weight-bold">Privacy Policy</a>
             </div>
         </div>
     </footer>
@@ -248,7 +279,7 @@
     <!-- JS Files -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/on_ready.js"></script>
+    <script src="./js/on_ready.min.js"></script>
     <!-- <script src="./js/scroll.js"></script> -->
     <!-- /JS Files -->
 
