@@ -9513,6 +9513,11 @@ p.about-text {
   display: block;
 }
 
+.pricing-plan {
+  width: 300px;
+  max-width: 100vw;
+}
+
 .instagram-feed {
   background-color: #7a5e80;
   -webkit-clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
