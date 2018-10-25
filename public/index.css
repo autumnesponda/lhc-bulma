@@ -9385,11 +9385,15 @@ a.navbar-burger {
   background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)), url(../images/Project-Drawing_hero.jpg);
 }
 
-hr.dark {
-  border: 0;
-  height: 1px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#ccc), color-stop(#4a4a4a), to(#ccc));
-  background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
+.email-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.email-link:hover {
+  color: #e3c0f2;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 p.about-text {
