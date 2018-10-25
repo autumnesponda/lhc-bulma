@@ -9404,6 +9404,10 @@ p.about-text {
   margin-top: 1em;
 }
 
+.contact-form-container {
+  width: 55vw;
+}
+
 .grow {
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
