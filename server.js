@@ -3,7 +3,8 @@ var express = require("express"),
   bodyParser = require("body-parser"),
   request = require("request"),
   cookieParser = require("cookie-parser"),
-  session = require("express-session");
+  session = require("express-session"),
+  helmet = require("helmet");
 
 var config = require("./config.json");
 
@@ -23,15 +24,19 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(compression());
+app.use(helmet());
 
 // Express Validator
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(
   session({
-    secret: 'cookie',
+    secret: 'mySuPeRS3cR3tSecR3t676974677564',
+    name: 'sessionId',
     saveUninitialized: false,
-    resave: false
+    resave: false,
+    secure: true,
+    httpOnly: true
   })
 );
 // End Express Validator
