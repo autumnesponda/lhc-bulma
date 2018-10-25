@@ -44,8 +44,13 @@ app.get("/", function (req, res) {
 });
 
 app.get("/contact", function (req, res) {
+  let query = req.query.subject;
+  console.log(query);
+
   res.render("contact", {
-    data: {}
+    data: {
+      subject: query
+    }
   });
 });
 
