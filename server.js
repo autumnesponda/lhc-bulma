@@ -9,8 +9,7 @@ var express = require("express"),
 var config = require("./config.json");
 
 // Compression Setup - Remove if not needed
-const compression = require('compression');
-
+const compression = require("compression");
 
 var app = express();
 const expressValidator = require("express-validator");
@@ -31,8 +30,8 @@ app.use(expressValidator());
 app.use(cookieParser());
 app.use(
   session({
-    secret: 'mySuPeRS3cR3tSecR3t676974677564',
-    name: 'sessionId',
+    secret: "mySuPeRS3cR3tSecR3t676974677564",
+    name: "sessionId",
     saveUninitialized: false,
     resave: false,
     secure: true,
@@ -44,11 +43,11 @@ app.use(
 var port = 3000;
 
 // Routes
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
   res.render("index");
 });
 
-app.get("/contact", function (req, res) {
+app.get("/contact", function(req, res) {
   let query = req.query.subject;
   console.log(query);
 
@@ -59,28 +58,25 @@ app.get("/contact", function (req, res) {
   });
 });
 
-app.get("/privacy-policy", function (req, res) {
+app.get("/privacy-policy", function(req, res) {
   res.render("privacy-policy");
 });
 
-app.get("/portfolio", function (req, res) {
+app.get("/portfolio", function(req, res) {
   res.render("portfolio");
 });
 
-app.get("/admin", function (req, res) {
+app.get("/admin", function(req, res) {
   res.render("admin");
-})
-
-app.get("/about", function (req, res) {
-  res.render("about");
-})
+});
 // End Routes
 
-app.post("/send", function (req, res) {
+app.post("/send", function(req, res) {
   let name = req.body.name;
   let email = req.body.email;
   let telepone = req.body.telephone;
   let subject = req.body.subject;
+  let budget = req.body.budget;
 
   // Set the fields
   req.checkBody("name", "Name is required").notEmpty();
@@ -90,6 +86,8 @@ app.post("/send", function (req, res) {
   req
     .checkBody("telephone", "Enter a valid phone number")
     .isMobilePhone("en-US");
+  req.checkBody("budget", "Budget is required").notEmpty();
+  req.checkBody("budget", "Enter a valid number for budget").isNumeric();
 
   // If there's form validation errors, render the contact page and produce the errors
   var errors = req.validationErrors();
@@ -132,7 +130,7 @@ app.post("/send", function (req, res) {
     "&remoteip=" +
     req.connection.remoteAddress;
   // Hitting GET request to the URL, Google will respond with success or error scenario.
-  request(verificationUrl, function (error, response, body) {
+  request(verificationUrl, function(error, response, body) {
     body = JSON.parse(body);
     // Success will be true or false depending upon captcha validation.
     // If the user fails the Captcha
@@ -200,7 +198,7 @@ app.post("/send", function (req, res) {
 });
 
 // 404
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.status(404);
 
   // respond with html page
@@ -223,6 +221,6 @@ app.use(function (req, res, next) {
   res.type("txt").send("Not found");
 });
 
-app.listen(process.env.PORT || port, function () {
+app.listen(process.env.PORT || port, function() {
   console.log("Server is running at port: ", port);
 });
