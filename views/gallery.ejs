@@ -35,6 +35,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <!-- /FontAwesome -->
 
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/js/uikit-icons.min.js"></script>
+
+
     <!-- IE Compatability -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -86,7 +94,7 @@
                     </div>
                     <div class="columns is-variable is-1 is-multiline has-small-gap">
                 <% } %>
-                <%- include('_galleryItem', {galleryItem: galleryItems[i]}); %>
+                <%- include('_galleryItem', {galleryItem: galleryItems[i], id: i}); %>
             <% } %>
             </div>
         </div>
@@ -111,7 +119,7 @@
         <div class="content has-text-centered">
             <p>
                 <strong>Little House Creative </strong>&COPY;<span id="year">
-                    <script src="./js/year.js"></script>
+                    <!--<script src="/public/js/year.js"></script>-->
                 </span>
             </p>
         </div>
@@ -126,8 +134,8 @@
     <!-- JS Files -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/on_ready.js"></script>
-    <script src="./js/scroll.js"></script>
+    <!--<script src="./js/on_ready.js"></script>-->
+    <!--<script src="./js/scroll.js"></script>-->
     <!-- /JS Files -->
 
     <!-- Load AOS Script -->

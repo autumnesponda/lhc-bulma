@@ -65,7 +65,7 @@
     </div>
     <div class="navbar-menu" id="navMenu">
         <div class="navbar-end">
-            <a href="/gallery" class="navbar-item is-tab">Gallery</a>
+            <a href="/gallery" class="navbar-item is-tab">Portfolio</a>
             <a href="#" class="navbar-item is-tab">Services</a>
             <a href="#" class="navbar-item is-tab">About</a>
             <a href="/contact" class="navbar-item is-tab">Contact</a>
@@ -79,7 +79,7 @@
     <div class="hero-body hero-image">
         <div class="container">
             <h1 class="title has-text-centered is-uppercase is-size-1 has-text-white">
-                File Upload Testing!
+                Admin Panel
             </h1>
         </div>
     </div>
@@ -87,29 +87,43 @@
 <!-- /Hero -->
 <section class="section animated fadeInUp faster">
     <div class="container">
-        <h1 class="title has-text-centered has-text-weight-light">Let's try and upload a thing</h1>
-        <div class="content has-text-centered">
+        <!-- Success Message -->
+        <% if (msg) { %>
+            <div class="notification is-success has-text-centered">
+                <button class="delete"></button>
+                <%= msg %>
+            </div>
+        <% } %>
+        <!-- /Success Message -->
+
+        <h1 class="title has-text-centered has-text-weight-light">Upload to the Gallery</h1>
+        <div class="content has-text-centered has-addons-centered">
             <form action="/upload" enctype="multipart/form-data" method="POST" >
-                <div class="field">
-                    <label class="label">Pick the main gallery photo</label>
-                    <div class="control">
+                <div class="field center">
+                    <div class="column is-narrow is-centered">
+                        <label class="label">Pick the main gallery photo</label>
+                    </div>
+                    <div class="column control is-narrow is-centered">
                         <input type="file" accept="image/*" name="galleryPhoto" required>
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Detail Text</label>
+                    <label class="label">Hover Text</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Hover Description" name="hoverText" required>
+                        <input class="input" type="text" placeholder="Hover Text" name="hoverText" required>
                     </div>
                 </div>
                 <div class="field">
+                    <label class="label">Modal Description Text</label>
                     <div class="control">
-                        <textarea class="textarea" placeholder="Description on click" name="fullDescription" required></textarea>
+                        <textarea class="textarea" placeholder="Modal Description Text" name="fullDescription" required></textarea>
                     </div>
                 </div>
-                <div class="field">
-                    <label class="label">Pick the gallery photos</label>
-                    <div class="control">
+                <div class="field center">
+                    <div class="column is-narrow is-centered">
+                        <label class="label">Pick the rest of the gallery photos</label>
+                    </div>
+                    <div class="column control is-narrow is-centered">
                         <input type="file" multiple="" accept="image/*" name="childPhotos" required>
                     </div>
                 </div>

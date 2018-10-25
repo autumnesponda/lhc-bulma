@@ -93,6 +93,7 @@ app.get("/gallery", function (req, res) {
            result.forEach((item) => {
                items.push(item);
            });
+           items.reverse();
            res.render("gallery", {galleryItems: items});
        });
     });
@@ -210,7 +211,7 @@ app.post('/login', urlencodedParser, (req, res) => {
                 if (err) throw err;
 
                 if (isMatch)
-                    res.render('upload');
+                    res.render('upload', { msg: "" });
 
                 // TODO: incorrect password page
                 else
@@ -222,10 +223,7 @@ app.post('/login', urlencodedParser, (req, res) => {
 });
 
 //
-app.post('/upload', multer(multerConfig).fields([
-                        { name: 'galleryPhoto', maxCount: 1 },
-                        { name: 'childPhotos', maxCount: 20 }
-                    ]), function(req, res){
+app.post('/upload', multer(multerConfig).fields([ { name: 'galleryPhoto', maxCount: 1 }, { name: 'childPhotos', maxCount: 20 } ]), (req, res) => {
 
     var file = req.files['galleryPhoto'][0];
     var galleryItem = GalleryItem({
@@ -246,6 +244,7 @@ app.post('/upload', multer(multerConfig).fields([
        if (err) throw err;
 
        console.log("gallery item uploaded successfully");
+       res.render("upload", { msg: 'Gallery item uploaded successfully!' });
     });
 });
 
