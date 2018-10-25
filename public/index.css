@@ -9459,6 +9459,7 @@ p.about-text {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  will-change: scroll-position;
 }
 
 .navbar-brand {
@@ -9520,8 +9521,6 @@ p.about-text {
 
 .instagram-feed {
   background-color: #7a5e80;
-  -webkit-clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
-          clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
 }
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
