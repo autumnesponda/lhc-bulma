@@ -15,5 +15,5 @@ $(document).ready(function () {
     $(".delete").click(function () {
         $(".success-notification").fadeOut("slow");
         $(".error-notification").fadeOut("slow");
-    })
+    });
 });
