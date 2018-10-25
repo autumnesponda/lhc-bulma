@@ -32,6 +32,7 @@
     "gulp-purgecss": "^1.1.1",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1",
+    "helmet": "^3.14.0",
     "node-fetch": "^2.2.0",
     "nodemailer": "^4.6.8",
     "path": "^0.12.7",
