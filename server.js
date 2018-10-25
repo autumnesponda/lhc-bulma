@@ -29,7 +29,7 @@ app.use(expressValidator());
 app.use(cookieParser());
 app.use(
   session({
-    secret: config.secret,
+    secret: 'cookie',
     saveUninitialized: false,
     resave: false
   })
