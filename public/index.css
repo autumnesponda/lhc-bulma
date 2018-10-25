@@ -9404,8 +9404,13 @@ p.about-text {
   margin-top: 1em;
 }
 
+.bio-pic {
+  border-radius: 2em;
+}
+
 .contact-form-container {
   width: 55vw;
+  max-width: 100%;
 }
 
 .grow {
@@ -9468,6 +9473,10 @@ p.about-text {
 
 .navbar-brand {
   letter-spacing: 0.25rem;
+}
+
+.nav-text {
+  margin-left: 10px;
 }
 
 .navbar-item.is-tab,
