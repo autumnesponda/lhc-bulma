@@ -1,7 +1,7 @@
 var express = require("express"),
-  nodeMailer = require("nodemailer"),
-  bodyParser = require("body-parser"),
-  request = require("request");
+    nodeMailer = require("nodemailer"),
+    bodyParser = require("body-parser"),
+    request = require("request");
 
 var config = require("./config.json");
 
@@ -9,13 +9,13 @@ var app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
+    bodyParser.urlencoded({
+        extended: true
+    })
 );
 app.use(bodyParser.json());
 
-var urlencodedParser = bodyParser.urlencoded({extended:false});
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 const mongoose = require('mongoose');
 
 // TODO: configure this when uploaded to the server
@@ -23,7 +23,7 @@ var url = 'mongodb://localhost:27017';
 
 // DB schemas
 User = require('./schemas/user-model');
-GalleryItem = require('./schemas/gallery-item-model');
+PortfolioItem = require('./schemas/portfolio-item-model');
 
 // fs and multer for saving images to database
 var fs = require('fs');
@@ -32,28 +32,28 @@ var multer = require('multer');
 const multerConfig = {
     storage: multer.diskStorage({
         //Setup where the user's file will go
-        destination: function(req, file, next){
+        destination: function (req, file, next) {
             next(null, __dirname + '/public/uploads');
         },
 
         //Then give the file a unique name
-        filename: function(req, file, next){
+        filename: function (req, file, next) {
             // console.log(file);
             const ext = file.mimetype.split('/')[1];
-            next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+            next(null, file.fieldname + '-' + Date.now() + '.' + ext);
         }
     }),
 
     //A means of ensuring only images are uploaded.
-    fileFilter: function(req, file, next){
-        if(!file){
+    fileFilter: function (req, file, next) {
+        if (!file) {
             next();
         }
         const image = file.mimetype.startsWith('image/');
-        if(image){
+        if (image) {
             // console.log('photo uploaded');
             next(null, true);
-        }else{
+        } else {
             // console.log("file not supported");
             return next();
         }
@@ -63,75 +63,85 @@ const multerConfig = {
 // allows for public access to images stored in ~/public/ folder
 app.use(express.static('public'));
 
-
 var port = 3000;
 
 app.get("/", function (req, res) {
-  res.render("index");
+    res.render("index");
 });
 
 app.get("/contact", function (req, res) {
-  res.render("contact", {
-    msg: ""
-  });
+    res.render("contact", {
+        msg: ""
+    });
 });
 
 app.get("/privacy-policy", function (req, res) {
-  res.render("privacy-policy");
+    res.render("privacy-policy");
 });
 
-app.get("/gallery", function (req, res) {
+app.get("/portfolio", function (req, res) {
+    // if we can't connect to the db or it otherwise throws an error,
+    // then we just render the static gallery
+    // make sure we return out so the server doesn't randomly crash after a few moments
+
     mongoose.connect(url, (err) => {
-       if (err) throw err;
+        if (err) {
+            res.render("staticPortfolio");
+            return;
+        }
 
-       GalleryItem.find((err, result) => {
-           if (err) throw err;
+        PortfolioItem.find((err, result) => {
+            if (err) {
+                res.render("staticPortfolio");
+                return;
+            }
 
-           // we're going to grab all the gallery items from the db
-           // so we can pass them down to the response to render it out
-           var items = [];
-           result.forEach((item) => {
-               items.push(item);
-           });
-           items.reverse();
-           res.render("gallery", {galleryItems: items});
-       });
+            // we're going to grab all the gallery items from the db
+            // so we can pass them down to the response to render it out
+            var items = [];
+            result.forEach((item) => {
+                items.push(item);
+            });
+            items.reverse();
+
+            res.render("portfolio", {portfolioItems: items});
+        });
     });
 });
 
 app.get("/admin", function (req, res) {
-   res.render("admin");
+    res.render("admin");
 });
 
 app.get("/register", function (req, res) {
-  res.render("register");
+    res.render("register");
 });
 
 app.post("/send", function (req, res) {
-  // g-recaptcha-response is the key that browser will generate upon form submit.
-  // if its blank or null means user has not selected the captcha, so return the error.
-  if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
-    return res.json({
-      "responseCode": 1,
-      "responseDesc": "Please select captcha"
-    });
-  }
-  // Put your secret key here.
-  var secretKey = config.secretKey;
-  // req.connection.remoteAddress will provide IP address of connected user.
-  var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
-  // Hitting GET request to the URL, Google will respond with success or error scenario.
-  request(verificationUrl, function (error, response, body) {
-    body = JSON.parse(body);
-    // Success will be true or false depending upon captcha validation.
-    if (body.success !== undefined && !body.success) {
-      return res.json({
-        "responseCode": 1,
-        "responseDesc": "Failed captcha verification"
-      });
+    // g-recaptcha-response is the key that browser will generate upon form submit.
+    // if its blank or null means user has not selected the captcha, so return the error.
+    if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+        return res.json({
+            "responseCode": 1,
+            "responseDesc": "Please select captcha"
+        });
     }
-    if (!error) {
-      const output = `
+    // Put your secret key here.
+    var secretKey = config.secretKey;
+    // req.connection.remoteAddress will provide IP address of connected user.
+    var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    // Hitting GET request to the URL, Google will respond with success or error scenario.
+    request(verificationUrl, function (error, response, body) {
+        body = JSON.parse(body);
+        // Success will be true or false depending upon captcha validation.
+        if (body.success !== undefined && !body.success) {
+            return res.json({
+                "responseCode": 1,
+                "responseDesc": "Failed captcha verification"
+            });
+        }
+        if (!error) {
+            const output = `
     <p><strong>You have a new inquiry!</strong></p>
     <h3>Contact Details</h3>
     <ul>
@@ -144,39 +154,39 @@ app.post("/send", function (req, res) {
     <p>${req.body.message}</p>
     `;
 
-      let transporter = nodeMailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-          user: config.username,
-          pass: config.password
-        },
-        tls: {
-          rejectUnauthorized: false
+            let transporter = nodeMailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: config.username,
+                    pass: config.password
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
+            });
+
+            let mailOptions = {
+                from: `Contact ${config.from}`, // sender address
+                to: config.to, // list of receivers
+                subject: "New Inquiry", // Subject line
+                text: "", // plain text body
+                html: output // html body
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+
+                console.log("Message %s sent: %s", info.messageId, info.response);
+                res.render("contact", {
+                    msg: "Email has been sent successfully!"
+                });
+            });
         }
-      });
-
-      let mailOptions = {
-        from: `Contact ${config.from}`, // sender address
-        to: config.to, // list of receivers
-        subject: "New Inquiry", // Subject line
-        text: "", // plain text body
-        html: output // html body
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          return console.log(error);
-        }
-
-        console.log("Message %s sent: %s", info.messageId, info.response);
-        res.render("contact", {
-          msg: "Email has been sent successfully!"
-        });
-      });
-    }
-  });
+    });
 });
 
 app.post('/registerToDb', urlencodedParser, (req, res) => {
@@ -191,9 +201,7 @@ app.post('/registerToDb', urlencodedParser, (req, res) => {
         user.save(function (err) {
             if (err) throw err;
         });
-
     });
-
 });
 
 app.post('/login', urlencodedParser, (req, res) => {
@@ -211,7 +219,7 @@ app.post('/login', urlencodedParser, (req, res) => {
                 if (err) throw err;
 
                 if (isMatch)
-                    res.render('upload', { msg: "" });
+                    res.render('upload', {msg: ""});
 
                 // TODO: incorrect password page
                 else
@@ -223,10 +231,13 @@ app.post('/login', urlencodedParser, (req, res) => {
 });
 
 //
-app.post('/upload', multer(multerConfig).fields([ { name: 'galleryPhoto', maxCount: 1 }, { name: 'childPhotos', maxCount: 20 } ]), (req, res) => {
+app.post('/upload', multer(multerConfig).fields([{name: 'galleryPhoto', maxCount: 1}, {
+    name: 'childPhotos',
+    maxCount: 20
+}]), (req, res) => {
 
     var file = req.files['galleryPhoto'][0];
-    var galleryItem = GalleryItem({
+    var portfolioItem = PortfolioItem({
         mainImageName: file.filename,
         mainImageUrl: '/uploads/' + file.filename,
         hoverText: req.body.hoverText,
@@ -234,44 +245,44 @@ app.post('/upload', multer(multerConfig).fields([ { name: 'galleryPhoto', maxCou
     });
     var files = req.files['childPhotos'];
     for (var i = 0; i < files.length; i++) {
-        galleryItem.childrenImages.push({
+        portfolioItem.slideshowImages.push({
             name: files[i].filename,
             url: '/uploads/' + files[i].filename,
         });
     }
 
-    galleryItem.save((err) => {
-       if (err) throw err;
+    portfolioItem.save((err) => {
+        if (err) throw err;
 
-       console.log("gallery item uploaded successfully");
-       res.render("upload", { msg: 'Gallery item uploaded successfully!' });
+        console.log("gallery item uploaded successfully");
+        res.render("upload", {msg: 'Gallery item uploaded successfully!'});
     });
 });
 
 // 404
 app.use(function (req, res, next) {
-  res.status(404);
+    res.status(404);
 
-  // respond with html page
-  if (req.accepts('html')) {
-    res.render('404', {
-      url: req.url
-    });
-    return;
-  }
+    // respond with html page
+    if (req.accepts('html')) {
+        res.render('404', {
+            url: req.url
+        });
+        return;
+    }
 
-  // respond with json
-  if (req.accepts('json')) {
-    res.send({
-      error: 'Not found'
-    });
-    return;
-  }
+    // respond with json
+    if (req.accepts('json')) {
+        res.send({
+            error: 'Not found'
+        });
+        return;
+    }
 
-  // default to plain-text. send()
-  res.type('txt').send('Not found');
+    // default to plain-text. send()
+    res.type('txt').send('Not found');
 });
 
 app.listen(process.env.PORT || port, function () {
-  console.log("Server is running at port: ", port);
+    console.log("Server is running at port: ", port);
 });
