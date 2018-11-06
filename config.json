@@ -1,6 +1,7 @@
 {
-    "username": "user@domain.com",
-    "password": "myPassword",
-    "to": "someUser@email.com",
-    "from": "somebody@email.com"
+    "username": "email@gmail.com",
+    "password": "password",
+    "to": "email@gmail.com",
+    "from": "email@gmail.com",
+    "secretKey": "yourReCaptchaSecretKey"
 }

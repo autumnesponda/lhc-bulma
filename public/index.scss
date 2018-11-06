@@ -1,9 +1,6 @@
 // // Custom Variables
-$font-stack: 'Raleway',
+$font-stack: "Muli",
 sans-serif;
-
-$header-font: 'Amatic SC',
-cursive;
 
 // Original Colors - Non Google Color
 // $primary-color: #e6e6fa;
@@ -25,9 +22,30 @@ $navbar-item-hover-background-color: none;
 $navbar-tab-hover-border-bottom-color: $color-three;
 $button-focus-box-shadow-color: $primary-color;
 $link-focus-border: $primary-color;
+$card-footer-background-color: white;
+$card-footer-border-top: none;
+// Fluid container gap
+$gap: 128px;
 
-/* BULMA IMPORTS */
-@import "../node_modules/bulma/bulma.sass";
+// Bulma Imports
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+@import "../node_modules/bulma/sass/layout/_all.sass";
+@import "../node_modules/bulma/sass/elements/other.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/panel.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/content.sass";
+@import "../node_modules/bulma/sass/elements/form.sass";
+@import "../node_modules/bulma/sass/elements/icon.sass";
+@import "../node_modules/bulma/sass/elements/image.sass";
+@import "../node_modules/bulma/sass/elements/notification.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+
+// External Bulma Imports
+@import "../node_modules/bulma-pricingtable/dist/css/bulma-pricingtable.sass";
 
 @mixin transform($transforms) {
   -moz-transform: $transforms;
@@ -98,6 +116,10 @@ a.navbar-burger {
   color: #4a4a4a;
 }
 
+footer {
+  padding: 3rem 1.5rem !important;
+}
+
 .fa-chevron-down:hover {
   color: $dark-color;
   cursor: pointer;
@@ -105,20 +127,26 @@ a.navbar-burger {
 
 .arrow-down {
   @include animation(pulseUpDown 1.2s infinite ease-in-out normal);
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 
-hr.dark {
-  border: 0;
-  height: 1px;
-  background: #4a4a4a;
-  // background-image: linear-gradient(to right, #ccc, #4a4a4a, #ccc);
-  margin-block-start: 2em;
-  margin-block-end: 2em;
+.about-hero {
+  background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
+    url(../images/Project-Drawing_hero.jpg);
 }
 
-.about {
-  background: $dark-color;
+.email-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.email-link:hover {
+  color: $secondary-color;
+  @include transition(0.25s ease-in-out);
+}
+
+p.about-text {
+  font-size: 18px;
 }
 
 // Button hover effect
@@ -131,6 +159,27 @@ hr.dark {
 //   transition-timing-function: ease;
 //   transition-delay: 0s;
 // }
+
+.bottom-disclaimer {
+  margin-top: 1em;
+}
+
+.bio-pic {
+  border-radius: 2em;
+}
+
+.contact-form-container {
+  width: 55vw;
+  max-width: 100%;
+}
+
+.grow {
+  transition: all 0.25s ease-in-out;
+}
+
+.grow:hover {
+  @include transform(scale(1.05));
+}
 
 .center {
   display: flex;
@@ -159,50 +208,45 @@ hr.dark {
     url(../images/ExposedInteriors4_Hero.jpg);
 }
 
-.is-large {
-  font-size: 4em;
+hr {
+  text-align: center;
+  max-width: 100%;
+  margin: 24px auto;
 }
 
 .is-extra-large {
   font-size: 5em;
 }
 
-.is-huge {
-  font-size: 10em;
-}
-
-.is-fancy {
-  font-family: $header-font;
-}
-
-.button.is-rounded {
-  padding-left: 2em;
-  padding-right: 2em;
+.is-inline {
+  display: inline-block;
 }
 
 .fullheight-hero-img {
   background: linear-gradient(rgba(74, 74, 74, 0.5), rgba(74, 74, 74, 0.5)),
-    url(../images/fullheight_hero1a.jpg);
+    url(../images/fullheight_hero1a_compressed.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  // filter: blur(3px);
-}
-
-.main-hero {
-  background: linear-gradient(120deg, $primary-color, $white);
-  // background: $secondary-color;
 }
 
 .navbar-brand {
   letter-spacing: 0.25rem;
 }
 
+.nav-text {
+  margin-left: 10px;
+}
+
 .navbar-item.is-tab,
 .navbar-item {
   border-bottom: 3px solid transparent;
   @include transition(0.25s ease-in-out);
+}
+
+.no-bottom-padding {
+  padding-bottom: 0;
 }
 
 .overlay {
@@ -220,6 +264,7 @@ hr.dark {
   position: relative;
   left: -20px;
   top: 0px;
+  margin-right: -40px;
 }
 
 .overlay-text {
@@ -245,8 +290,25 @@ hr.dark {
   }
 }
 
+.pricing-plan {
+  width: 300px;
+  max-width: 100vw;
+}
 
+.dark-color-background {
+  background-color: $dark-color;
+  // clip-path: polygon(0 0, 100% 64px, 100% 100%, 0 100%);
+}
 
+.slick-next,
+.slick-prev {
+  color: #363636 !important;
+}
+
+.slick-next:before,
+.slick-prev:before {
+  color: #363636 !important;
+}
 
 /* ZOOM FEATURES - UNCOMMENT lines 158-172 FOR ZOOM */
 // .has-zoom img {
